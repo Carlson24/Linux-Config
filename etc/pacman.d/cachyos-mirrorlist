@@ -1,0 +1,29 @@
+######################################################
+####                                              ####
+####        CachyOS Repository Mirrorlist         ####
+####                                              ####
+######################################################
+
+## China
+Server = https://mirror.nju.edu.cn/cachyos/repo/$arch/$repo
+Server = https://mirrors.ustc.edu.cn/cachyos/repo/$arch/$repo
+#Server = https://mirrors.tuna.tsinghua.edu.cn/cachyos/repo/$arch/$repo
+
+## CDN77 (World Wide Datacenters)
+Server = https://cdn77.cachyos.org/repo/$arch/$repo
+
+## Tebi CDN (Germany, USA, SG)
+Server = https://cdn-1.cachyos.org/$arch/$repo
+
+## Cloudflare R2
+Server = https://cdn.cachyos.org/repo/$arch/$repo
+
+## Germany
+Server = https://aur.cachyos.org/repo/$arch/$repo
+Server = https://mirror.cachyos.org/repo/$arch/$repo
+
+## USA
+Server = https://us.cachyos.org/repo/$arch/$repo
+
+## Austria
+Server = https://at.cachyos.org/repo/$arch/$repo
