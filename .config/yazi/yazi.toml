@@ -1,0 +1,22 @@
+[manager]
+ratio          = [1, 4, 3]
+sort_by        = "natural"
+sort_dir_first = true
+linemode       = "size_and_mtime"
+show_hidden    = true
+title_format   = "{cwd}"
+
+[preview]
+image_delay   = 0
+image_filter  = "lanczos3"
+image_quality = 90
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
