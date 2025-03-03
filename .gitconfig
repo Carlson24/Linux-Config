@@ -1,0 +1,13 @@
+[user]
+	email = aubreycarlson24@outlook.com
+	name = Carlson24
+	signingKey = 780CA517FFB9CAE96F5C8FA67F40FAF29DF9F3AF
+[core]
+	autocrlf = input
+	editor = helix
+[init]
+	defaultBranch = master
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
