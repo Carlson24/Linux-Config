@@ -1,0 +1,6 @@
+patch:
+  schema_list:
+    - schema: rime_ice               # 雾凇拼音（全拼）
+    - schema: double_pinyin          # 自然码双拼
+  menu:
+    page_size: 7                     # 候选词个数

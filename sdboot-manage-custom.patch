@@ -1,0 +1,33 @@
+--- sdboot-manage-default	2025-01-06 19:15:12.000000000 +0800
++++ sdboot-manage	2025-03-14 14:32:16.093963074 +0800
+@@ -162,7 +162,7 @@ generate_entries() {
+         if [ "$devtype" = "crypt" ]; then
+             # handle cryptdevice
+             cryptdevice_uuid="$(blkid -o value -s UUID "$(cryptsetup status "${devname}" | grep device | awk '{print $2}')")"
+-            if grep -q '^HOOKS=\(.*sd-encrypt.*\)$' /etc/mkinitcpio.conf 2>/dev/null; then
++            if grep -q '^HOOKS+=\(.*sd-encrypt.*\)$' /etc/mkinitcpio.conf.d/20-systemd.conf 2>/dev/null; then
+                 sdoptions+=" rd.luks.name=${cryptdevice_uuid}=${devname}"
+             else
+                 sdoptions+=" cryptdevice=UUID=${cryptdevice_uuid}:${devname}"
+@@ -194,8 +194,13 @@ generate_entries() {
+         # get the kernel location so the initrd can be written to the same location as the kernel
+         [[ $(dirname "$kernel") == "/" ]] && kernelpath="" || kernelpath="$(dirname "$kernel")"
+ 
++        cat <<EOF >"/etc/kernel/cmdline"
++${sdoptions} ${LINUX_OPTIONS}
++EOF
++
+         cat <<EOF >"${entry_path}.conf"
+ title ${title}
++sort-key cachyos
+ options ${sdoptions} ${LINUX_OPTIONS}
+ linux ${kernel}
+ EOF
+@@ -204,6 +209,7 @@ EOF
+         if [ "${DISABLE_FALLBACK}" != "yes" ]; then
+             cat <<EOF >"${entry_path}-fallback.conf"
+ title ${title} (Fallback)
++sort-key cachyos-fallback
+ options ${sdoptions} ${LINUX_FALLBACK_OPTIONS}
+ linux ${kernel}
+ EOF

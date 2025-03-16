@@ -1,0 +1,15 @@
+ollama pull granite-embedding:278m
+ollama pull snowflake-arctic-embed2:568m
+ollama pull qwen2.5:1.5b
+ollama pull qwen2.5-coder:1.5b
+ollama pull granite3.2:2b
+ollama pull granite3.2-vision:2b
+ollama pull qwen2.5:3b
+ollama pull qwen2.5-coder:3b
+ollama pull phi4-mini:3.8b
+ollama pull gemma3:4b
+ollama pull qwen2.5:7b
+ollama pull qwen2.5-coder:7b
+ollama pull granite3.2:8b
+ollama pull phi4:14b
+ollama pull qwq:32b

@@ -1,0 +1,141 @@
+## Formatter and Language Server Configurations
+
+# Bash - shfmt
+[[language]]
+name = "bash"
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = 'shfmt', args = ["-i", "4"] }
+auto-format = true
+
+# C and C++ - clang-format
+[[language]]
+name = "c"
+file-types = ["c", "h"]
+formatter = { command = 'clang-format' }
+auto-format = true
+
+[[language]]
+name = "cpp"
+file-types = ["cpp", "cc", "cxx", "hpp", "hcc", "hxx"]
+formatter = { command = 'clang-format' }
+auto-format = true
+
+# Fish - fish_indent
+[[language]]
+name = "fish"
+formatter = { command = "fish_indent" }
+auto-format = true
+
+# Go - Gofumpt
+[language-server.gopls.config]
+gofumpt = true
+
+[[language]]
+name = "go"
+auto-format = true
+
+# GraphQL - Prettier
+[[language]]
+name = "graphql"
+formatter = { command = 'prettier', args = ["--parser", "graphql"] }
+auto-format = true
+
+# Haskell - stylish-haskell
+[[language]]
+name = "haskell"
+formatter = { command = "stylish-haskell", args = [] }
+auto-format = true
+
+# HTML and CSS - Prettier
+[[language]]
+name = "html"
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "css"
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+auto-format = true
+
+[[language]]
+name = "scss"
+formatter = { command = 'prettier', args = ["--parser", "scss"] }
+auto-format = true
+
+# JavaScript (JS), TypeScript (TS), JSX and TSX - Prettier
+[[language]]
+name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+# JSON and JSONC - Prettier
+[[language]]
+name = "json"
+formatter = { command = 'prettier', args = ["--parser", "json"] }
+auto-format = true
+
+[[language]]
+name = "jsonc"
+formatter = { command = 'prettier', args = ["--parser", "jsonc"] }
+auto-format = true
+
+# LaTex
+[language-server.texlab.config.texlab.build]
+onSave = true
+
+# Lua - Stylua
+[[language]]
+name = "lua"
+formatter = { command = "stylua", args = [ "-" ] }
+auto-format = true
+
+# Markdown - Prettier
+[[language]]
+name = "markdown"
+formatter = { command = 'prettier', args = ["--parser", "markdown"] }
+auto-format = true
+
+# Python - Ruff
+[[language]]
+name = "python"
+formatter = { command = "ruff", args = ["format", "--line-length", "88", "-"] }
+auto-format = true
+
+# Rust - dioxus fmt
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.rust-analyzer.config.cargo]
+features = "all"
+
+[[language]]
+name = "rust"
+formatter = { command = "bash", args = ["-c", "rustfmt | dx fmt -f -"] }
+
+# TOML - Taplo
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["format", "-"] }
+auto-format = true
+
+# XML - Tidy
+[[language]]
+name = "xml"
+formatter = { command = "tidy", args = ["-q", "-xml", "--show-errors", "0", "--show-warnings", "0", "--force-output", "--indent", "auto",  "--vertical-space", "yes", "--tidy-mark", "no", "-wrap", "120"] }
+auto-format = true
+
+# Yaml - Prettier
+[[language]]
+name = "yaml"
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+auto-format = true

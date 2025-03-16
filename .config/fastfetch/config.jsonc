@@ -7,7 +7,7 @@
     "separator": " "
   },
   "logo": {
-    "source": "$HOME/.config/fastfetch/cachyos.png",
+    "source": "$HOME/.config/fastfetch/nyarchlogo.png",
     "width": 40,
     "height": 20,
     "padding": {

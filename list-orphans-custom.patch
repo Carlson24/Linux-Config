@@ -1,0 +1,14 @@
+--- list-orphans-default	2025-03-12 22:28:18.000000000 +0800
++++ list-orphans	2025-03-12 22:28:43.559420025 +0800
+@@ -19,10 +19,8 @@ if [[ -n "$orphans" ]]; then
+         fi
+         total_size=$(echo "$total_size + $numeric_size_in_mib" | bc)
+         printf "\033[1;37m%-20s\033[0m \033[1;34m%s\033[0m\n" "$orphan" "$size"
+-    done <<< "$orphans"
++    done <<<"$orphans"
+ 
+     echo -e "\033[1;37m--------------------------------\033[0m"
+     echo -e "\033[1;37mTotal                \033[1;32m$(printf "%.2f" $total_size) MiB\033[0m"
+-else
+-    echo -e "\033[1m==>\033[1;32m No orphans found\033[0m"
+ fi

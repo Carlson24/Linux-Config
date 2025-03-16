@@ -1,0 +1,9 @@
+Defaults    env_keep += "ftp_proxy http_proxy https_proxy no_proxy"
+Defaults    env_keep += "EDITOR SUDO_EDITOR"
+Defaults    env_keep += "LFS"
+
+Defaults    insults
+Defaults    pwfeedback
+
+carlson     ALL=(ALL:ALL)   ALL
+carlson     ALL=(ALL)       NOPASSWD:   /usr/bin/psd-overlay-helper
