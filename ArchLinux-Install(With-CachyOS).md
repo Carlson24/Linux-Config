@@ -285,18 +285,18 @@ pacman -Syy && pacman -Suu
 pacman -Sy adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-hk-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-hk-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-tw-fonts awesome-terminal-fonts cantarell-fonts gnu-free-fonts noto-color-emoji-fontconfig noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendesktop-fonts otf-monaspace powerline-fonts terminus-font ttc-iosevka ttc-iosevka-aile ttc-iosevka-curly ttc-iosevka-curly-slab ttc-iosevka-etoile ttc-iosevka-slab ttf-bitstream-vera ttf-carlito ttf-cascadia-code ttf-dejavu ttf-fantasque-nerd ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-hack ttf-input ttf-intel-one-mono ttf-jetbrains-mono ttf-joypixels ttf-liberation ttf-meslo-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono ttf-opensans ttf-roboto ttf-roboto-mono ttf-sarasa-gothic ttf-ubuntu-font-family wqy-zenhei
 pacman -Sy plasma-meta
 pacman -Sy profile-sync-daemon firefox-developer-edition firefox-developer-edition-i18n-zh-cn
-pacman -Sy --asdeps --neeed cachyos-fish-config cachyos-ananicy-rules cachyos-hello cachyos-kernel-manager cachyos-packageinstaller cachyos-settings cachyos-zsh-config cachyos-wallpapers
-pacman -Sy --asdeps --neeed libwnck3 mesa-utils xf86-input-libinput xorg-xdpyinfo xorg-server xorg-xinit xorg-xinput xorg-xkill xorg-xrandr
-pacman -Sy --asdeps --neeed dhclient dnsmasq dnsutils ethtool iwd modemmanager networkmanager networkmanager-openvpn nss-mdns usb_modeswitch wpa_supplicant wireless-regdb xl2tpd dhcpcd
-pacman -Sy --asdeps --neeed ufw
-pacman -Sy --asdeps --neeed bluez bluez-hid2hci bluez-libs bluez-utils
-pacman -Sy --asdeps --neeed pacman-contrib pkgfile rebuild-detector reflector paru octopi
-pacman -Sy --asdeps --neeed accountsservice bash-completion ffmpegthumbnailer gst-libav gst-plugin-pipewire gst-plugins-bad gst-plugins-ugly libdvdcss libgsf libopenraw mlocate poppler-glib xdg-user-dirs xdg-utils
-pacman -Sy --asdeps --neeed efitools haveged nfs-utils nilfs-utils ntp smartmontools unrar unzip xz btrfs-assistant systemd-ukify
-pacman -Sy --asdeps --neeed alsa-firmware alsa-plugins alsa-utils pipewire-pulse wireplumber pipewire-alsa rtkit pipewire-jack
-pacman -Sy --asdeps --neeed dmidecode dmraid hdparm hwdetect lsscsi mtools sg3_utils sof-firmware linux-firmware
-pacman -Sy --asdeps --neeed cpupower upower tuned tuned-ppd
-pacman -Sy --asdeps --neeed alacritty btop duf findutils fsarchiver git glances hwinfo inxi nano-syntax-highlighting fastfetch pv python-defusedxml python-packaging rsync sed wget ripgrep nano vim openssh
+pacman -Sy --asdeps --needed cachyos-fish-config cachyos-ananicy-rules cachyos-hello cachyos-kernel-manager cachyos-packageinstaller cachyos-settings cachyos-zsh-config cachyos-wallpapers
+pacman -Sy --asdeps --needed libwnck3 mesa-utils xf86-input-libinput xorg-xdpyinfo xorg-server xorg-xinit xorg-xinput xorg-xkill xorg-xrandr
+pacman -Sy --asdeps --needed dhclient dnsmasq dnsutils ethtool iwd modemmanager networkmanager networkmanager-openvpn nss-mdns usb_modeswitch wpa_supplicant wireless-regdb xl2tpd dhcpcd
+pacman -Sy --asdeps --needed ufw
+pacman -Sy --asdeps --needed bluez bluez-hid2hci bluez-libs bluez-utils
+pacman -Sy --asdeps --needed pacman-contrib pkgfile rebuild-detector reflector paru octopi
+pacman -Sy --asdeps --needed accountsservice bash-completion ffmpegthumbnailer gst-libav gst-plugin-pipewire gst-plugins-bad gst-plugins-ugly libdvdcss libgsf libopenraw mlocate poppler-glib xdg-user-dirs xdg-utils
+pacman -Sy --asdeps --needed efitools haveged nfs-utils nilfs-utils ntp smartmontools unrar unzip xz btrfs-assistant systemd-ukify
+pacman -Sy --asdeps --needed alsa-firmware alsa-plugins alsa-utils pipewire-pulse wireplumber pipewire-alsa rtkit pipewire-jack
+pacman -Sy --asdeps --needed dmidecode dmraid hdparm hwdetect lsscsi mtools sg3_utils sof-firmware linux-firmware
+pacman -Sy --asdeps --needed cpupower upower tuned tuned-ppd
+pacman -Sy --asdeps --needed alacritty btop duf findutils fsarchiver git glances hwinfo inxi nano-syntax-highlighting fastfetch pv python-defusedxml python-packaging rsync sed wget ripgrep nano vim openssh
 pacman -Sy --asdeps --needed cachyos-nord-kde-theme-git cachyos-kde-settings cachyos-themes-sddm ark bluedevil breeze-gtk char-white dolphin egl-wayland gwenview konsole kate kdeconnect kde-gtk-config kdegraphics-thumbnailers kdeplasma-addons ffmpegthumbs kinfocenter kinit kscreen kwallet-pam kwalletmanager plasma-desktop libplasma plasma-nm plasma-pa plasma-workspace plasma-integration plasma-firewall plasma-browser-integration plasma-systemmonitor plasma-thunderbolt powerdevil spectacle sddm sddm-kcm qt6-wayland xsettingsd xdg-desktop-portal xdg-desktop-portal-kde phonon-qt6-vlc
 pacman -Sy --asdeps --needed cups cups-filters cups-pdf foomatic-db foomatic-db-engine foomatic-db-gutenprint-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds foomatic-db-ppds ghostscript gsfonts gutenprint splix system-config-printer
 pacman -Sy --asdeps --needed hplip python-pyqt5 python-reportlab cups cups-filters cups-pdf
