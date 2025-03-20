@@ -84,6 +84,7 @@ swapon /dev/mapper/swap
 ## 安装前准备
 
 ```bash
+mkdir -pv /mnt/cachyos/etc/pacman.d
 cat << "EOF" > /mnt/cachyos/etc/pacman.d/mirrorlist
 ######################################################
 ####                                              ####
@@ -355,88 +356,16 @@ ufw enable
 echo "Device not available" > /usr/lib/firmware/qat_420xx.bin
 echo "Device not available" > /usr/lib/firmware/qat_420xx_mmp.bin
 
-cat << "EOF" > /etc/environment.d/editor.conf
-EDITOR=helix
-SUDO_EDITOR=helix
-EOF
-cat << "EOF" > /etc/environment.d/fcitx5.conf
-QT_IM_MODULES="wayland;fcitx;ibus"
-XMODIFIERS="@im=fcitx"
-EOF
-cat << "EOF" > /etc/environment.d/hardware-raytracing.conf
-VKD3D_CONFIG="dxr11,dxr"
-PROTON_ENABLE_NVAPI=1
-PROTON_ENABLE_NGX_UPDATER=1
-EOF
-cat << "EOF" > /etc/environment.d/lfs.conf
-LFS="/mnt/lfs"
-EOF
-cat << "EOF" > /etc/environment.d/native-file-dialog.conf
-GDK_DEBUG=portals
-GTK_USE_PORTAL=1
-EOF
+mkdir -pv /etc/environment.d
+
 cat << "EOF" > /etc/environment.d/opencl.conf
 RUSTICL_ENABLE=iris
 EOF
-cat << "EOF" > /etc/environment.d/proton-wayland.conf
-PROTON_ENABLE_WAYLAND=1
-EOF
-cat << "EOF" > /etc/environment.d/qt-wayland.conf
-QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
-EOF
-cat << "EOF" > /etc/environment.d/sdl2-wayland.conf
-SDL_VIDEODRIVER="wayland,x11"
-EOF
 
-cat << "EOF" > /etc/profile.d/editor.sh
-#!/bin/bash
-
-export EDITOR=helix
-export SUDO_EDITOR=helix
-EOF
-cat << "EOF" > /etc/profile.d/fcitx5.sh
-#!/bin/bash
-
-export QT_IM_MODULES="wayland;fcitx;ibus"
-export XMODIFIERS="@im=fcitx"
-EOF
-cat << "EOF" > /etc/profile.d/hardware-raytracing.sh
-#!/bin/bash
-
-export VKD3D_CONFIG="dxr11,dxr"
-export PROTON_ENABLE_NVAPI=1
-export PROTON_ENABLE_NGX_UPDATER=1
-EOF
-cat << "EOF" > /etc/profile.d/lfs.sh
-#!/bin/bash
-
-export LFS="/mnt/lfs"
-EOF
-cat << "EOF" > /etc/profile.d/native-file-dialog.sh
-#!/bin/bash
-
-export GDK_DEBUG=portals
-export GTK_USE_PORTAL=1
-EOF
 cat << "EOF" > /etc/profile.d/opencl.sh
 #!/bin/bash
 
 export RUSTICL_ENABLE=iris
-EOF
-cat << "EOF" > /etc/profile.d/proton-wayland.sh
-#!/bin/bash
-
-export PROTON_ENABLE_WAYLAND=1
-EOF
-cat << "EOF" > /etc/profile.d/qt-wayland.sh
-#!/bin/bash
-
-export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
-EOF
-cat << "EOF" > /etc/profile.d/sdl2-wayland.sh
-#!/bin/bash
-
-export SDL_VIDEODRIVER="wayland,x11"
 EOF
 cat << "EOF" > /etc/profile.d/userpath.sh
 #!/bin/bash
@@ -491,7 +420,7 @@ cat << "EOF" > /etc/sdboot-manage.conf.d/30-kdump.conf
 LINUX_OPTIONS+=" crashkernel=512M"
 EOF
 cat << "EOF" > /etc/sdboot-manage.conf.d/30-plymouth.conf
-LINUX_OPTIONS+=" splash"
+LINUX_OPTIONS+=" splash plymouth.use-simpledrm"
 EOF
 cat << "EOF" > /etc/sdboot-manage.conf.d/30-silent_boot.conf
 LINUX_OPTIONS+=" nowatchdog quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3"
@@ -537,19 +466,18 @@ EOF
 cat << "EOF" > /etc/NetworkManager/dnsmasq.d/listen.conf
 listen-address=::1,127.0.0.1
 EOF
-cat << "EOF" > /etc/NetworkManager/dnsmasq.d/quad9-server.conf
-# Quad9 Service Addresses & Features
-# Secured w/ECS: Malware blocking, DNSSEC Validation, ECS enabled
-# DOH https://dns11.quad9.net/dns-query
-# DOT tls://dns11.quad9.net
+cat << "EOF" > /etc/NetworkManager/dnsmasq.d/alidns-server.conf
+# AliDNS Service Addresses & Features
+# DOH https://dns.alidns.com/dns-query
+# DOT tls://dns.alidns.com
 
 # DNS Server
-server=9.9.9.11
-server=2620:fe::11
+server=223.5.5.5
+server=2400:3200::1
 
 # DNS Server Fallback
-server=149.112.112.11
-server=2620:fe::fe:11
+server=223.6.6.6
+server=2400:3200:baba::1
 EOF
 
 sed 's/#default_uki=\"\/efi\/EFI\/Linux\/arch-linux-cachyos.efi\"/default_uki=\"\/boot\/EFI\/Linux\/arch-linux-cachyos.efi.nouse\"/g' -i /etc/mkinitcpio.d/linux-cachyos.preset

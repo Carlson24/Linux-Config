@@ -9,8 +9,7 @@ fi
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-export ZSH_COMPDUMP="$ZSH/cache/zcompdump"
+export ZSH="$HOME/.data/zsh/oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -99,7 +98,7 @@ zstyle ':notify:*' error-title "命令执行失败 (in #{time_elapsed} seconds)"
 zstyle ':notify:*' success-icon "dialog-information-symbolic"
 zstyle ':notify:*' success-title "命令执行成功 (in #{time_elapsed} seconds)"
 # timer
-export TIMER_FORMAT="\n\033[1m==>\033[1;32m [%d]\033[0m"
+export TIMER_FORMAT="\n==>\033[1;32m [%d]\033[0m"
 export TIMER_PRECISION=3
 export TIMER_THRESHOLD=1
 # zsh-completions
@@ -128,9 +127,9 @@ export LANGUAGE="zh_CN.UTF-8"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="vim"
+  export EDITOR='vim'
 else
-  export EDITOR="helix"
+  export EDITOR='helix'
 fi
 
 # Compilation flags
@@ -176,4 +175,4 @@ alias man="batman"
 alias lfschroot="sudo mount-lfs && sudo /usr/bin/chroot /mnt/lfs /usr/bin/env -i HOME=/root TERM=\"$TERM\" PS1='(lfs chroot) \u:\w\$ ' PATH=/usr/bin:/usr/sbin MAKEFLAGS=\"-j$(nproc)\" TESTSUITEFLAGS=\"-j$(nproc)\" /bin/bash --login"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $ZSH/cache/p10k.zsh ]] || source $ZSH/cache/p10k.zsh
+[[ ! -f "$XDG_DATA_HOME"/zsh/p10k.zsh ]] || source "$XDG_DATA_HOME"/zsh/p10k.zsh

@@ -1,1 +1,0 @@
-LFS="/mnt/lfs"
