@@ -67,7 +67,7 @@ export PYTHONUSERBASE="$XDG_DATA_HOME"/python
 
 ### Qt
 # export QT_AUTO_SCREEN_SCALE_FACTOR=0
-# QT_ENABLE_HIGHDPI_SCALING=0
+# export QT_ENABLE_HIGHDPI_SCALING=0
 
 ### Readline
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
