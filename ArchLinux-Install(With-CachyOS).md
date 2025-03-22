@@ -24,29 +24,29 @@ parted /dev/nvme1n1
 (parted)gpt
 
 cgdisk /dev/nvme0n1
-(cgdisk)    boot    1826816     ef00    BOOT
-(cgdisk)    rootfs  402657280   8304    CachyOS
-(cgdisk)    rootfs  67112960    8304    LFS
-(cgdisk)    swap    16781312    8200    SWAP
+(cgdisk)    boot    1826816     ef00    boot
+(cgdisk)    rootfs  402657280   8304    cachyos
+(cgdisk)    rootfs  67112960    8304    lfs
+(cgdisk)    swap    16781312    8200    swap
 
 cgdisk /dev/nvme1n1
-(cgdisk)    data    "all"       8300    Data
+(cgdisk)    data    "all"       8300    data
 
-cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=CachyOS /dev/nvme0n1p2
-cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=LFS     /dev/nvme0n1p3
-cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=SWAP    /dev/nvme0n1p4
-cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=Data    /dev/nvme1n1p1
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=cachyos /dev/nvme0n1p2
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=lfs     /dev/nvme0n1p3
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=swap    /dev/nvme0n1p4
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 4096 --key-size 512 --pbkdf argon2id --use-urandom --sector-size=4096 --verify-passphrase --verbose --label=data    /dev/nvme1n1p1
 
 cryptsetup open /dev/nvme0n1p2 cachyos
 cryptsetup open /dev/nvme0n1p3 lfs
 cryptsetup open /dev/nvme0n1p4 swap
 cryptsetup open /dev/nvme1n1p1 data
 
-mkfs.fat -F 32   -S 4096 -n BOOT    /dev/nvme0n1p1
-mkfs.btrfs -f -v -s 4096 -L CachyOS /dev/mapper/cachyos
-mkfs.btrfs -f -v -s 4096 -L Data    /dev/mapper/data
-mkfs.ext4 -v     -b 4096 -L LFS     /dev/mapper/lfs
-mkswap --verbose -p 4096 -L SWAP    /dev/mapper/swap
+mkfs.fat -F 32   -S 4096 -n boot    /dev/nvme0n1p1
+mkfs.btrfs -f -v -s 4096 -L cachyos /dev/mapper/cachyos
+mkfs.btrfs -f -v -s 4096 -L data    /dev/mapper/data
+mkfs.ext4 -v     -b 4096 -L lfs     /dev/mapper/lfs
+mkswap --verbose -p 4096 -L swap    /dev/mapper/swap
 ```
 
 ## 建立子卷并挂载
@@ -306,7 +306,7 @@ pacman -Sy --asdeps --needed espeak-ng mousetweaks orca
 helix /etc/fstab
 plymouth-set-default-theme cachyos
 
-useradd -m -U -s /bin/fish -c "Aubrey Carlson" -K UMASK=077 carlson
+useradd -m -U -s /bin/zsh -c "Aubrey Carlson" -K UMASK=077 carlson
 usermod -aG wheel,rfkill,sys,users,lp,video,network,storage,audio,brlapi carlson
 chown -R carlson:carlson /home/carlson
 passwd root
@@ -355,24 +355,6 @@ ufw enable
 
 echo "Device not available" > /usr/lib/firmware/qat_420xx.bin
 echo "Device not available" > /usr/lib/firmware/qat_420xx_mmp.bin
-
-mkdir -pv /etc/environment.d
-
-cat << "EOF" > /etc/environment.d/opencl.conf
-RUSTICL_ENABLE=iris
-EOF
-
-cat << "EOF" > /etc/profile.d/opencl.sh
-#!/bin/bash
-
-export RUSTICL_ENABLE=iris
-EOF
-cat << "EOF" > /etc/profile.d/userpath.sh
-#!/bin/bash
-
-append_path "$(systemd-path user-binaries)"
-export PATH
-EOF
 
 cat << "EOF" > /etc/mkinitcpio.conf.d/00-base_hooks.conf
 HOOKS=(base systemd autodetect microcode modconf kms keyboard)

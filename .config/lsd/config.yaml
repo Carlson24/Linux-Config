@@ -1,38 +1,15 @@
 # == Color ==
 # This has various color options. (Will be expanded in the future.)
 color:
-  # When to colorize the output.
-  # When "classic" is set, this is set to "never".
-  # Possible values: never, auto, always
   when: always
-  # How to colorize the output.
-  # When "classic" is set, this is set to "no-color".
-  # Possible values: default, custom
-  # When "custom" is set, lsd will look in the config directory for `colors.yaml`.
   theme: custom
-
 # == Icons ==
 icons:
-  # When to use icons.
-  # When "classic" is set, this is set to "never".
-  # Possible values: always, auto, never
   when: always
-  # Which icon theme to use.
-  # Possible values: fancy, unicode
   theme: fancy
-  # Separator between icon and the name
-  # Default to 1 space
   separator: " "
-
 # == Sorting ==
 sorting:
-  # Specify what to sort by.
-  # Possible values: extension, name, time, size, version
   column: name
-  # Whether to reverse the sorting.
-  # Possible values: false, true
   reverse: false
-  # Whether to group directories together and where.
-  # When "classic" is set, this is set to "none".
-  # Possible values: first, last, none
   dir-grouping: first

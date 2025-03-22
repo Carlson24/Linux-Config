@@ -1,0 +1,3 @@
+:set viminfofile=~/.config/vim/viminfo
+:set termguicolors
+:colorscheme catppuccin_mocha

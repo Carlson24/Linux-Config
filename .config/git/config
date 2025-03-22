@@ -11,3 +11,7 @@
 	gpgSign = true
 [tag]
 	gpgSign = true
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
+[delta]
+	features = catppuccin-mocha
