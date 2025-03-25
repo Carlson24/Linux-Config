@@ -7,7 +7,7 @@
     "separator": " "
   },
   "logo": {
-    "source": "$HOME/.config/fastfetch/nyarchlogo.png",
+    "source": "~/.config/fastfetch/nyarchlogo.png",
     "width": 40,
     "height": 20,
     "padding": {
@@ -139,7 +139,7 @@
     },
     {
       "type": "initsystem",
-      "key": "├─ Init System:",
+      "key": "├─󰿄 Init System:",
       "keyColor": "blue"
     },
     {

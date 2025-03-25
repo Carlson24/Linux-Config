@@ -15,6 +15,10 @@ export GTK_USE_PORTAL=1
 ### CUDA
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nvidia-cuda
 
+### EDITOR
+export EDITOR=helix
+export SUDO_EDITOR=helix
+
 ### Fcitx5
 export QT_IM_MODULES="wayland;fcitx;ibus"
 export XMODIFIERS="@im=fcitx"
@@ -48,8 +52,14 @@ export LFS=/mnt/lfs
 ### Maven
 export MAVEN_OPTS=-Dmaven.repo.local="$XDG_DATA_HOME"/maven/repository
 
+### MySQL
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
+
 ### Npm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+
+### Nuget
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 
 # PostgreSQL
 export PSQLRC="$XDG_CONFIG_HOME"/pg/psqlrc

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+export TMP=/tmp
+export RIME="$XDG_DATA_HOME"/fcitx5/rime
+export URL="https://github.com/amzxyz"
+
+## Download wanxiang schema
+wget -c -P "$TMP" "$URL"/rime_wanxiang_pro/releases/download/v6.0/wanxiang-zrm-fuzhu.zip  || exit 1
+unzip -o   "$TMP"/wanxiang-zrm-fuzhu.zip -d "$TMP"     || exit 1
+rm -v      "$TMP"/wanxiang-zrm-fuzhu/custom_phrase.txt || exit 1
+cp -v -rf  "$TMP"/wanxiang-zrm-fuzhu/* "$RIME"         || exit 1
+
+## Download dicts
+wget -c -P "$TMP" "$URL"/rime_wanxiang_pro/releases/download/dict-nightly/3-zrm_dicts.zip || exit 1
+unzip -o   "$TMP"/3-zrm_dicts.zip -d "$TMP"            || exit 1
+cp -v -rf  "$TMP"/zrm_dicts/* "$RIME"/cn_dicts         || exit 1
+
+## Download octagram
+wget -c -P "$TMP" "$URL"/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram        || exit 1
+cp -v -rf  "$TMP"/wanxiang-lts-zh-hans.gram "$RIME"    || exit 1
+
+## fix Permissions
+chmod 644 "$RIME"/*.*
+chmod 644 "$RIME"/LICENSE
+chmod 600 "$RIME"/installation.yaml
+chmod 600 "$RIME"/user.yaml
+chmod 700 "$RIME"/tips.userdb
+chmod 700 "$RIME"/zc.userdb
+chmod 644 "$RIME"/cn_dicts/*.yaml
+chmod 644 "$RIME"/custom/*
+chmod 644 "$RIME"/en_dicts/*
+chmod 644 "$RIME"/jm_dicts/*
+chmod 644 "$RIME"/lua/*.lua
+chmod 644 "$RIME"/lua/cold_word_drop/*
+chmod 644 "$RIME"/opencc/*
+
+## patch wanxiang.schema.yaml
+sed 's/  __include: 自然码/  __include: 全拼/'                -i "$RIME"/wanxiang.schema.yaml
+sed 's/#      - mohuyin/      - mohuyin/'                     -i "$RIME"/wanxiang.schema.yaml
+sed 's/#- lua_processor\@\*select/- lua_processor\@\*select/' -i "$RIME"/wanxiang.schema.yaml
+sed 's/#  user_dict/  user_dict/'                             -i "$RIME"/wanxiang.schema.yaml
+
+## patch wanxiang.dict.yaml
+sed 's/#  - cn_dicts\/people/  - cn_dicts\/people/'           -i "$RIME"/wanxiang.dict.yaml
+sed 's/#  - cn_dicts\/place/  - cn_dicts\/place/'             -i "$RIME"/wanxiang.dict.yaml
+
+## patch melt_eng.schema.yaml
+sed 's/  __include: algebra_zrm/  __include: algebra_pinyin/' -i "$RIME"/melt_eng.schema.yaml
+
+## patch radical_pinyin.schema.yaml
+sed 's/  __include: algebra_zrm/  __include: algebra_pinyin/' -i "$RIME"/radical_pinyin.schema.yaml
+
+## redeploy
+qdbus6 org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://config/addon/rime/deploy" ""

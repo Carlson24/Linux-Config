@@ -5,8 +5,8 @@
 ######################################################
 
 ## China
-Server = https://mirror.nju.edu.cn/cachyos/repo/$arch/$repo
 Server = https://mirrors.ustc.edu.cn/cachyos/repo/$arch/$repo
+Server = https://mirror.nju.edu.cn/cachyos/repo/$arch/$repo
 #Server = https://mirrors.tuna.tsinghua.edu.cn/cachyos/repo/$arch/$repo
 
 ## CDN77 (World Wide Datacenters)

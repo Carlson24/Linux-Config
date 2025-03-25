@@ -11,5 +11,5 @@ ollama pull gemma3:4b
 ollama pull qwen2.5:7b
 ollama pull qwen2.5-coder:7b
 ollama pull granite3.2:8b
+ollama pull gemma3:12b
 ollama pull phi4:14b
-ollama pull qwq:32b

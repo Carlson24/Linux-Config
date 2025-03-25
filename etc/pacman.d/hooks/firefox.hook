@@ -1,0 +1,12 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=firefox
+
+[Action]
+Description=Making Firefox Emoji Available to Fontconfig 
+Depends=coreutils
+When=PostTransaction
+NeedsTargets
+Exec=ln -sf /usr/lib/firefox/fonts/TwemojiMozilla.ttf /usr/share/fonts/TTF/TwemojiMozilla.ttf

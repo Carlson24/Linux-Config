@@ -1,8 +1,0 @@
-patch:
-  grammar:
-    language: dist/amz-v1n3m3-zh-hans
-    collocation_max_length: 5
-    collocation_min_length: 2
-  translator/contextual_suggestions: true
-  translator/max_homophones: 7
-  translator/max_homographs: 7

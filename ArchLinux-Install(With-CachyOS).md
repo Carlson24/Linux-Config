@@ -24,7 +24,7 @@ parted /dev/nvme1n1
 (parted)gpt
 
 cgdisk /dev/nvme0n1
-(cgdisk)    boot    1826816     ef00    boot
+(cgdisk)    boot    1826816     ef00    BOOT
 (cgdisk)    rootfs  402657280   8304    cachyos
 (cgdisk)    rootfs  67112960    8304    lfs
 (cgdisk)    swap    16781312    8200    swap
@@ -42,7 +42,7 @@ cryptsetup open /dev/nvme0n1p3 lfs
 cryptsetup open /dev/nvme0n1p4 swap
 cryptsetup open /dev/nvme1n1p1 data
 
-mkfs.fat -F 32   -S 4096 -n boot    /dev/nvme0n1p1
+mkfs.fat -F 32   -S 4096 -n BOOT    /dev/nvme0n1p1
 mkfs.btrfs -f -v -s 4096 -L cachyos /dev/mapper/cachyos
 mkfs.btrfs -f -v -s 4096 -L data    /dev/mapper/data
 mkfs.ext4 -v     -b 4096 -L lfs     /dev/mapper/lfs
@@ -466,5 +466,5 @@ sed 's/#default_uki=\"\/efi\/EFI\/Linux\/arch-linux-cachyos.efi\"/default_uki=\"
 sed 's/#default_options=\"--splash \/usr\/share\/systemd\/bootctl\/splash-arch.bmp\"/default_options=\"--splash \/usr\/share\/systemd\/bootctl\/splash-arch.bmp\"/g' -i /etc/mkinitcpio.d/linux-cachyos.preset
 sed 's/#fallback_uki=\"\/efi\/EFI\/Linux\/arch-linux-cachyos-fallback.efi\"/fallback_uki=\"\/boot\/EFI\/Linux\/arch-linux-cachyos-fallback.efi.nouse\"/g' -i /etc/mkinitcpio.d/linux-cachyos.preset
 
-mkinitcpio -P && sdboot-manage gen
+sdboot-manage gen && mkinitcpio -P
 ```

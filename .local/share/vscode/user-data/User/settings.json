@@ -3,7 +3,7 @@
   "chat.commandCenter.enabled": false,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "'Cascadia Code NF', 'monospace', monospace",
+  "editor.fontFamily": "'Maple Mono NF CN', 'Twemoji Mozilla', 'Cascadia Code NF', 'monospace'",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.formatOnPaste": true,

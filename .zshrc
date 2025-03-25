@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
-export ZSH="$HOME/.data/zsh/oh-my-zsh"
+export ZSH="$HOME/.local/share/zsh/oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -36,7 +36,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 zstyle ':omz:update' mode reminder    # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 7
+zstyle ':omz:update' frequency 8
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 DISABLE_MAGIC_FUNCTIONS="true"
@@ -48,7 +48,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -77,11 +77,19 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autoupdate command-not-found extract fast-syntax-highlighting fzf git gpg-agent history-substring-search kate notify rust safe-paste shell-proxy timer ufw zoxide zsh-autosuggestions zsh-interactive-cd)
+plugins=(auto-notify autoupdate command-not-found extract fast-syntax-highlighting fzf git gpg-agent history-substring-search kate rust safe-paste shell-proxy timer ufw zoxide zsh-autosuggestions zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
 
 # Plugins Custom Setting
+# auto-notify
+export AUTO_NOTIFY_THRESHOLD=10
+export AUTO_NOTIFY_EXPIRE_TIME=15000
+export AUTO_NOTIFY_IGNORE=("man" "sleep")
+export AUTO_NOTIFY_TITLE="喵~命令 %command 已完成!"
+export AUTO_NOTIFY_BODY="命令持续 %elapsed 秒，退出代码为：%exit_code"
+export AUTO_NOTIFY_ICON_SUCCESS="$ZSH/../command-ok.png"
+export AUTO_NOTIFY_ICON_FAILURE="$ZSH/../command-error.png"
 # autoupdate
 export UPDATE_ZSH_DAYS=7
 ZSH_CUSTOM_AUTOUPDATE_QUIET=true
@@ -89,35 +97,34 @@ ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=4
 # shell-proxy
 export SHELLPROXY_URL="http://127.0.0.1:2080"
 export SHELLPROXY_NO_PROXY="localhost,127.0.0.1"
-# notify
-zstyle ':notify:*' app-name Konsole
-zstyle ':notify:*' expire-time 15000
-zstyle ':notify:*' command-complete-timeout 15
-zstyle ':notify:*' error-icon "dialog-error-symbolic"
-zstyle ':notify:*' error-title "命令执行失败 (in #{time_elapsed} seconds)"
-zstyle ':notify:*' success-icon "dialog-information-symbolic"
-zstyle ':notify:*' success-title "命令执行成功 (in #{time_elapsed} seconds)"
 # timer
 export TIMER_FORMAT="\n==>\033[1;32m [%d]\033[0m"
 export TIMER_PRECISION=3
 export TIMER_THRESHOLD=1
 # zsh-completions
+autoload -Uz compinit
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' format 'Completion: %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' list-prompt %S位于 %p: 使用 TAB 查看更多内容，或按下字符进行插入%s
+zstyle ':completion:*' list-prompt %S当前位于 %p: 使用 TAB 查看更多内容，或按下任意键退出%s
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' rehash true
-zstyle ':completion:*' select-prompt %S循环选择：当前位于 %p%s
+zstyle ':completion:*' select-prompt %S循环选择模式：当前位于 %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 # User configuration
+
+# Fix "no matches found"
+setopt no_nomatch
+
+# Enable Command Auto-Correction
+setopt correct
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -145,9 +152,13 @@ export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 # shells instead of the default "last window closed" history.
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-# Rustup Mirror
-export RUSTUP_DIST_SERVER="https://mirror.nju.edu.cn/rustup"
-export RUSTUP_UPDATE_ROOT="https://mirror.nju.edu.cn/rustup/rustup"
+# Anaconda
+[ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=true
+
+# Rust Toolchain
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
 # bat theme
 export BAT_THEME="Catppuccin Mocha"
@@ -167,12 +178,13 @@ export FZF_DEFAULT_OPTS=" --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source $ZSH_CUSTOM/uutils-coreutils.zsh
-alias curl="curl-rustls"
+alias curl="curl-rustls --progress-bar"
 alias ls="lsd -al"
 alias bat="prettybat"
 alias cat="prettybat"
 alias man="batman"
-alias lfschroot="sudo mount-lfs && sudo /usr/bin/chroot /mnt/lfs /usr/bin/env -i HOME=/root TERM=\"$TERM\" PS1='(lfs chroot) \u:\w\$ ' PATH=/usr/bin:/usr/sbin MAKEFLAGS=\"-j$(nproc)\" TESTSUITEFLAGS=\"-j$(nproc)\" /bin/bash --login"
+alias wget="wget --hsts-file=\"$XDG_CACHE_HOME\"/wget-hsts"
+alias yarn="yarn --use-yarnrc \"$XDG_CONFIG_HOME\"/yarn/config"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f "$XDG_DATA_HOME"/zsh/p10k.zsh ]] || source "$XDG_DATA_HOME"/zsh/p10k.zsh
+[[ ! -f $ZSH/../p10k.zsh ]] || source $ZSH/../p10k.zsh
