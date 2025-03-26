@@ -17,6 +17,7 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nvidia-cuda
 
 ### EDITOR
 export EDITOR=helix
+export VISUAL=helix
 export SUDO_EDITOR=helix
 
 ### Fcitx5
@@ -40,6 +41,9 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export VKD3D_CONFIG="dxr11,dxr"
 export PROTON_ENABLE_NVAPI=1
 export PROTON_ENABLE_NGX_UPDATER=1
+
+### Java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 ### Kwallet
 export GIT_ASKPASS=/usr/bin/ksshaskpass

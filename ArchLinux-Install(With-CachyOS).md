@@ -93,8 +93,8 @@ cat << "EOF" > /mnt/cachyos/etc/pacman.d/mirrorlist
 ######################################################
 
 ## China
-Server = https://mirror.nju.edu.cn/archlinux/$repo/os/$arch
 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirror.nju.edu.cn/archlinux/$repo/os/$arch
 #Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
 
 ## CachyOS
@@ -123,8 +123,8 @@ cat << "EOF" > /mnt/cachyos/etc/pacman.d/cachyos-mirrorlist
 ######################################################
 
 ## China
-Server = https://mirror.nju.edu.cn/cachyos/repo/$arch/$repo
 Server = https://mirrors.ustc.edu.cn/cachyos/repo/$arch/$repo
+Server = https://mirror.nju.edu.cn/cachyos/repo/$arch/$repo
 #Server = https://mirrors.tuna.tsinghua.edu.cn/cachyos/repo/$arch/$repo
 
 ## CDN77 (World Wide Datacenters)
@@ -284,8 +284,6 @@ sed 's/#<disabled_v3>//g' -i /etc/pacman.conf
 pacman -Syy && pacman -Suu
 
 pacman -Sy adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-hk-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-hk-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-tw-fonts awesome-terminal-fonts cantarell-fonts gnu-free-fonts noto-color-emoji-fontconfig noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra opendesktop-fonts otf-monaspace powerline-fonts terminus-font ttc-iosevka ttc-iosevka-aile ttc-iosevka-curly ttc-iosevka-curly-slab ttc-iosevka-etoile ttc-iosevka-slab ttf-bitstream-vera ttf-carlito ttf-cascadia-code ttf-dejavu ttf-fantasque-nerd ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-hack ttf-input ttf-intel-one-mono ttf-jetbrains-mono ttf-joypixels ttf-liberation ttf-meslo-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono ttf-opensans ttf-roboto ttf-roboto-mono ttf-sarasa-gothic ttf-ubuntu-font-family wqy-zenhei
-pacman -Sy plasma-meta
-pacman -Sy profile-sync-daemon firefox-developer-edition firefox-developer-edition-i18n-zh-cn
 pacman -Sy --asdeps --needed cachyos-fish-config cachyos-ananicy-rules cachyos-hello cachyos-kernel-manager cachyos-packageinstaller cachyos-settings cachyos-zsh-config cachyos-wallpapers
 pacman -Sy --asdeps --needed libwnck3 mesa-utils xf86-input-libinput xorg-xdpyinfo xorg-server xorg-xinit xorg-xinput xorg-xkill xorg-xrandr
 pacman -Sy --asdeps --needed dhclient dnsmasq dnsutils ethtool iwd modemmanager networkmanager networkmanager-openvpn nss-mdns usb_modeswitch wpa_supplicant wireless-regdb xl2tpd dhcpcd
@@ -298,17 +296,17 @@ pacman -Sy --asdeps --needed alsa-firmware alsa-plugins alsa-utils pipewire-puls
 pacman -Sy --asdeps --needed dmidecode dmraid hdparm hwdetect lsscsi mtools sg3_utils sof-firmware linux-firmware
 pacman -Sy --asdeps --needed cpupower upower tuned tuned-ppd
 pacman -Sy --asdeps --needed alacritty btop duf findutils fsarchiver git glances hwinfo inxi nano-syntax-highlighting fastfetch pv python-defusedxml python-packaging rsync sed wget ripgrep nano vim openssh
+pacman -Sy plasma-meta
 pacman -Sy --asdeps --needed cachyos-nord-kde-theme-git cachyos-kde-settings cachyos-themes-sddm ark bluedevil breeze-gtk char-white dolphin egl-wayland gwenview konsole kate kdeconnect kde-gtk-config kdegraphics-thumbnailers kdeplasma-addons ffmpegthumbs kinfocenter kinit kscreen kwallet-pam kwalletmanager plasma-desktop libplasma plasma-nm plasma-pa plasma-workspace plasma-integration plasma-firewall plasma-browser-integration plasma-systemmonitor plasma-thunderbolt powerdevil spectacle sddm sddm-kcm qt6-wayland xsettingsd xdg-desktop-portal xdg-desktop-portal-kde phonon-qt6-vlc
 pacman -Sy --asdeps --needed cups cups-filters cups-pdf foomatic-db foomatic-db-engine foomatic-db-gutenprint-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds foomatic-db-ppds ghostscript gsfonts gutenprint splix system-config-printer
 pacman -Sy --asdeps --needed hplip python-pyqt5 python-reportlab cups cups-filters cups-pdf
 pacman -Sy --asdeps --needed espeak-ng mousetweaks orca
+pacman -Sy profile-sync-daemon firefox-developer-edition firefox-developer-edition-i18n-zh-cn
 
-helix /etc/fstab
 plymouth-set-default-theme cachyos
 
 useradd -m -U -s /bin/zsh -c "Aubrey Carlson" -K UMASK=077 carlson
 usermod -aG wheel,rfkill,sys,users,lp,video,network,storage,audio,brlapi carlson
-chown -R carlson:carlson /home/carlson
 passwd root
 passwd carlson
 
@@ -466,5 +464,7 @@ sed 's/#default_uki=\"\/efi\/EFI\/Linux\/arch-linux-cachyos.efi\"/default_uki=\"
 sed 's/#default_options=\"--splash \/usr\/share\/systemd\/bootctl\/splash-arch.bmp\"/default_options=\"--splash \/usr\/share\/systemd\/bootctl\/splash-arch.bmp\"/g' -i /etc/mkinitcpio.d/linux-cachyos.preset
 sed 's/#fallback_uki=\"\/efi\/EFI\/Linux\/arch-linux-cachyos-fallback.efi\"/fallback_uki=\"\/boot\/EFI\/Linux\/arch-linux-cachyos-fallback.efi.nouse\"/g' -i /etc/mkinitcpio.d/linux-cachyos.preset
 
+helix /etc/fstab
+chown -R carlson:carlson /home/carlson
 sdboot-manage gen && mkinitcpio -P
 ```
