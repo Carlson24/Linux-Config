@@ -17,7 +17,6 @@
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 5000,
   "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
   "makefile.configureOnOpen": true,
   "redhat.telemetry.enabled": false,
   "terminal.integrated.cursorBlinking": true,
