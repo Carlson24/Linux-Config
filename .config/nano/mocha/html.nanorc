@@ -1,0 +1,31 @@
+## Syntax highlighting for HTML.
+
+syntax html "\.html?$"
+magic "HTML document"
+comment "<!--|-->"
+
+formatter tidy -m -q
+
+# Tags:
+color #9DD "<[[:alpha:]/!?][^>]*>"
+# Bold, italic, underlined, emphasis, and importance:
+color #CAF "</?(b|i|u|em|strong)>"
+
+# Named character references:
+color #E8A "&[^;[:space:]]*;"
+
+# Attributes:
+color #E8A "\<(abbr|accept(-charset)?|accesskey|action|alink|align|alt|archive|axis|background|bgcolor|border)="
+color #E8A "\<(cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?)="
+color #E8A "\<(content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|disabled|enctype)="
+color #E8A "\<(for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap)="
+color #E8A "\<(label|lang|link|longdesc|margin(height|width)|maxlength|media|method|multiple)="
+color #E8A "\<(name|nohref|noresize|noshade|object|onclick|onfocus|onload|onmouseover|profile|readonly|rel|rev)="
+color #E8A "\<(rows(pan)?|rules|scheme|scope|scrolling|selected|shape|size|span|src|standby|start|style|summary)="
+color #E8A "\<(tabindex|target|text|title|type|usemap|valign|value(type)?|vlink|vspace|width|xmlns|xml:space)="
+
+# Strings:
+color #AD9 ""([^"\]|\\.)*""
+
+# Comments:
+color #FDA start="<!--" end="-->"

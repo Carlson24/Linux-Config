@@ -1,0 +1,44 @@
+## Syntax highlighting for Python.
+
+syntax python "\.py$"
+header "^#!.*python"
+magic "Python script"
+comment "#"
+
+# Alternative linter: pylint --exit-zero
+linter pyflakes
+
+# Function definitions.
+color #26E "def [0-9A-Za-z_]+"
+# Keywords.
+color #199 "\<(and|as|assert|async|await|break|class|continue)\>"
+color #199 "\<(def|del|elif|else|except|finally|for|from)\>"
+color #199 "\<(global|if|import|in|is|lambda|nonlocal|not|or)\>"
+color #199 "\<(pass|raise|return|try|while|with|yield)\>"
+
+# These two are keywords in Python 2, but functions in Python 3,
+# so only color them when they are followed by #AABspace, assuming
+# that print(x) is a function invocation and print (x) is a statement.
+color #199 "\<(exec|print)([[:blank:]]|$)"
+
+# Special values.
+color #83E "\<(False|None|True)\>"
+
+# Mono-quoted strings.
+color #493 "'([^'\]|\\.)*'|"([^"\]|\\.)*"|'''|""""
+color #456 "'''|""""
+# Comments.
+color #C13 "(^|[[:blank:]])#.*"
+# Triple-quoted strings.
+color #493 start="'''([^'),]|$)" end="(^|[^(\])'''"
+color #493 start=""""([^"),]|$)" end="(^|[^(\])""""
+
+# Backslash escapes.
+color #D82 "\\($|[\'"abfnrtv]|[0-3]?[0-7]?[0-7]|x[[:xdigit:]]{2})"
+color #D82 "\\(N\{[[:alpha:]]+\}|u[[:xdigit:]]{4}|U[[:xdigit:]]{8})"
+
+# Reminders.
+color #BBC,#D82 "\<(FIXME|TODO|XXX)\>"
+
+# Trailing #AABspace.
+color ,#493 "[[:space:]]+$"

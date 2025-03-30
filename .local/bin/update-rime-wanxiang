@@ -20,10 +20,11 @@ wget -c -P "$TMP" "$URL"/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gr
 cp -v -rf  "$TMP"/wanxiang-lts-zh-hans.gram "$RIME"                                                 || exit 3
 
 ## patch wanxiang.schema.yaml
-sed 's/  __include: 自然码/  __include: 全拼/'                -i "$RIME"/wanxiang.schema.yaml       || exit 4
-sed 's/#      - mohuyin/      - mohuyin/'                     -i "$RIME"/wanxiang.schema.yaml       || exit 4
-sed 's/#- lua_processor\@\*select/- lua_processor\@\*select/' -i "$RIME"/wanxiang.schema.yaml       || exit 4
-sed 's/#  user_dict/  user_dict/'                             -i "$RIME"/wanxiang.schema.yaml       || exit 4
+sed 's/  __include: 自然码/  __include: 全拼/'                     -i "$RIME"/wanxiang.schema.yaml  || exit 4
+sed 's/#      - mohuyin/      - mohuyin/'                          -i "$RIME"/wanxiang.schema.yaml  || exit 4
+sed 's/#- lua_processor\@\*select/- lua_processor\@\*select/'      -i "$RIME"/wanxiang.schema.yaml  || exit 4
+sed 's/#  user_dict/  user_dict/'                                  -i "$RIME"/wanxiang.schema.yaml  || exit 4
+sed '/单字]/a\  - name: mars\n    states: [地, 焱]\n    reset: 0'  -i "$RIME"/wanxiang.schema.yaml  || exit 4
 
 ## patch wanxiang.dict.yaml
 sed 's/#  - cn_dicts\/people/  - cn_dicts\/people/'           -i "$RIME"/wanxiang.dict.yaml         || exit 5

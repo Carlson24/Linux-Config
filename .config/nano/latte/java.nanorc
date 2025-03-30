@@ -1,0 +1,16 @@
+## Syntax highlighting for Java.
+
+syntax java "\.java$"
+magic "Java "
+comment "//"
+
+color #493 "\<(boolean|byte|char|double|float|int|long|new|short|this|transient|void)\>"
+color #C13 "\<(break|case|catch|continue|default|do|else|finally|for|if|return|switch|throw|try|while)\>"
+color #199 "\<(abstract|class|extends|final|implements|import|instanceof|interface|native)\>"
+color #199 "\<(package|private|protected|public|static|strictfp|super|synchronized|throws|volatile)\>"
+color #C13 ""[^"]*""
+color #D82 "\<(true|false|null)\>"
+color #26E "//.*"
+color #26E start="/\*" end="\*/"
+color #26E start="/\*\*" end="\*/"
+color ,#493 "[[:space:]]+$"

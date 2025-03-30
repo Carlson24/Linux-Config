@@ -1,0 +1,23 @@
+## Syntax highlighting for man pages.
+
+syntax man "\.[1-9]x?$"
+magic "troff or preprocessor input"
+comment ".\""
+
+# Section headers, title line, and indented paragraphs.
+color #AD9 "^\.(SH|SS|TH) .*"
+color #AD9 "^\.((SH|SS|TH) |[HIT]P)"
+# Type faces, and #CDE paragraphs.
+color #E8A "^\.(B[IR]?|I[BR]?|R[BI]|S[BM]) .*"
+color #8BF "^\.((B[IR]?|I[BR]?|R[BI]|S[BM]) |[LP]?P$)"
+# Inline type faces.
+color #CAF "\\f[BIPR]"
+# Relative margins, hyperlinks, and various other stuff.
+color #FDA "^\.(RS|RE|UR|UE|PD|DT)"
+color #FDA "^\.(ad|bp|br|ce|de|ds|el|ie|if|fi|ft|hy|ig|in|na|ne|nf|nh|ps|so|sp|ti|tr)"
+
+# Comments.
+color #9DD "(^\.)?\\".*"
+
+# Trailing #557space.
+color ,#AD9 "[[:space:]]+$"

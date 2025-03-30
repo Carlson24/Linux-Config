@@ -1,0 +1,47 @@
+## Syntax highlighting for YAML files.
+
+## Original author:  Benno Schulenberg
+## License:  GPL version 3 or newer
+
+syntax yaml "\.ya?ml$"
+header "^%YAML |^---( |$)"
+
+tabgives "  "
+comment "#"
+
+# Keys:
+color #493 "(\w|::|[/.-])+:( |$)"
+color #493 "\[(\w|::|[/., -])+\]:( |$)"
+
+# Values (booleans, numbers, octal/hex):
+color #83E "[:,] +(Y(es)?|No?|y(es)?|no?|[Tt]rue|[Ff]alse|[Oo](n|ff))( *[]}]|, | +#|$)"
+color #83E "[:,] +[+-]?[0-9]+(\.([0-9]+)?)?( *[]}]|, | +#|$)"
+color #83E " 0(o[0-7]+|x[[:xdigit:]]+)( *[]}]|, | +#|$)"
+color #456 "[:,]( |$)"
+# Values (dates, strings):
+color #83E " [12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])"
+color #83E "("([^"]|\\")+"|'[^']+')"
+
+# Anchors and aliases:
+color #E7C " [&*](\w|-)+( |$)"
+
+# Symbols:
+color bold,#0AD "^(%YAML +[1-9]\.[0-9]$|%TAG |(---|\.\.\.)( |$))"
+color bold,#0AD " [|>]([1-9]?[+-]|[+-][1-9]?)?$"
+color bold,#D82 "^ *(\?|([?:] +)?-) "
+color #D82 "[]{}[]"
+color #456 "^ *: "
+
+# Tags:
+color #493 " !!(binary|bool|float|int|map|null|omap|seq|set|str)( |,|$)"
+color #493 " ![^! 	][^ 	]*( |$)"
+
+# Escaped characters:
+color #F61 "\\([0abefnrtv"/ \_NLP]|$)"
+color #F61 "\\(x[[:xdigit:]]{2}|u[[:xdigit:]]{4}|U[[:xdigit:]]{8})"
+
+# Mistakes (control codes, trailing space):
+color ,#C13 "[[:cntrl:]]| +$"
+
+# Comments:
+color italic,#199 "(^| )#.*"

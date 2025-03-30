@@ -1,0 +1,22 @@
+## Syntax highlighting for assembler.
+
+syntax asm "\.(S|s|asm)$"
+magic "assembler source"
+comment "//"
+
+color #E8A "\<[A-Z_]{2,}\>"
+color #AD9 "\.(data|subsection|text)"
+color #AD9 "\.(align|file|globl|global|hidden|section|size|type|weak)"
+color #FDA "\.(ascii|asciz|byte|double|float|hword|int|long|short|single|struct|word)"
+color #E8A "^[[:blank:]]*[.0-9A-Za-z_]*:"
+color #9DD "^[[:blank:]]*#[[:blank:]]*(define|undef|include|ifn?def|endif|elif|else|if|warning|error)"
+
+# Strings and names of included files.
+color #FDA ""([^"\]|\\.)*"|<[^= 	]*>"
+
+# Comments.
+color #8BF "//.*"
+color #8BF start="/\*" end="\*/"
+
+# Trailing #557space.
+color ,#AD9 "[[:space:]]+$"

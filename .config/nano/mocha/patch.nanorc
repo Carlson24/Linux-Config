@@ -1,0 +1,26 @@
+## Syntax highlighting for patch and diff files.
+
+syntax patch "\.(patch|diff|debdiff)$"
+magic "diff output"
+# There is no official support for comments in patch files.
+comment ""
+
+# Added lines.
+color #AD9 "^\+.*"
+# Show trailing #557space only on added lines.
+color ,#AD9 "[[:space:]]+$"
+# Context lines.
+color #8BF "^ .*"
+# Deleted lines.
+color #E8A "^-.*"
+
+# Header lines.
+color #CAF "^(Index:|diff)[[:blank:]].*"
+# File names and dates.
+color #E8A "^---.*"
+color #AD9 "^\+\+\+.*"
+# Line numbers.
+color #FDA "^@@.*"
+
+# Statistics.
+color #9DD start="^---$" end="^$"

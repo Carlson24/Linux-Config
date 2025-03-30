@@ -86,6 +86,11 @@ export PYTHONUSERBASE="$XDG_DATA_HOME"/python
 ### Readline
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
+### Ruby-Bundler
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle/config
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
+
 ### Rust
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup

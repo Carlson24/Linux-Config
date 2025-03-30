@@ -1,0 +1,40 @@
+## Syntax highlighting for Markdown files.
+
+## Original authors:  Ryan Westlund and Benno Schulenberg
+## License:  GPL version 3 or newer
+
+syntax markdown "\.md$"
+comment "<!--|-->"
+
+# Quoted:
+color #83E "^[ 	]*>.*"
+
+# List-item markers:
+color #83E "^(    |	)* ? ? ?(\*|\+|-|[1-9]+\.)( +|	)"
+
+# Emphasis and strong:
+color #493 "\*[^* 	][^*]*\*|_[^_ 	][^_]*_"
+color #493 "\*\*[^*]+\*\*|__[^_]+__"
+
+# Strikethrough:
+color #C13 "~~[^~]+~~"
+
+# Line breaks:
+color ,#26E "  $"
+
+# URLs and links:
+color #26E "\[[^]]+\]\([^)]+\)"
+color #83E "!?\[[^]]+\]"
+
+# Code snippet, indented code, and fenced code:
+color #199 "`[^`]+`"
+color #199 "^(    |	)+ *([^*+0-9> 	-]|[*+-]\S|[0-9][^.]).*"
+color #199 start="```" end="```$"
+
+# Headings and the underlining of headings:
+color #D82 "^#.*"
+color #D82 "^(=+|-+)$"
+
+# HTML tags and comments:
+color #199 "<[^>]+>"
+color #199 start="<!--" end="-->"

@@ -1,0 +1,25 @@
+set titlecolor #CDE,#557
+set minicolor #CDE,#557
+set numbercolor #CDE,#557
+set scrollercolor #CDE,#557
+set errorcolor bold,#557,#E8A
+
+set promptcolor bold,#557,#CAF
+set selectedcolor ,#CDE
+set statuscolor #445
+set stripecolor #E8A,#557
+
+set keycolor #CDE
+set functioncolor #445
+
+set tabsize 4
+set tabstospaces
+set autoindent
+set trimblanks
+set linenumbers
+set indicator
+set mouse
+
+include ~/.config/nano/mocha/*.nanorc
+include /usr/share/nano-syntax-highlighting/*.nanorc
+include /usr/share/nano/*.nanorc

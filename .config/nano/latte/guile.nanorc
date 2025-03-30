@@ -1,0 +1,23 @@
+## Syntax highlighting for Guile Scheme.
+
+syntax guile "\.scm$"
+header "^#!.*guile"
+comment ";"
+
+# Basic scheme functions
+color #493 "\<(do|if|lambda|let(rec)?|map|unless|when)\>"
+# Defining things
+color #199 "\<define(-macro|-module|-public|-syntax)?\>"
+# Quoted symbols
+color #D82 "'\<(\w|-)+\>"
+# Chars
+color #83E "#\\(.|\w+)"
+# Booleans
+color #C13 "(#t|#f)\>"
+# Keywords
+color #26E "#?:(\w|[?-])+"
+# Strings
+color #D82 start="^[[:blank:]]+"" end="[^\]""
+color #D82 ""([^"\]|\\.)*""
+# Comments
+color #199 "(^|[[:blank:]]);.*"

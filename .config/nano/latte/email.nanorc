@@ -1,0 +1,17 @@
+## Syntax highlighting for emails.
+
+syntax email "\.eml$"
+
+# Quoted lines.
+color #493 "^>.*"
+color #199 "^> ?>.*"
+color #D82 "^> ?> ?>.*"
+
+# Email addresses.
+color #83E "<[^@]+@[^@]+>"
+
+# URLs.
+color #26E "(https?|ftp)://\S+\.\S+[^[:space:].)]"
+
+# Signatures, even quoted ones.
+color #D82 start="^>* ?-- $" end="^>* ?$"

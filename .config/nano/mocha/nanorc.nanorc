@@ -1,0 +1,50 @@
+## Syntax highlighting for nanorc files.
+
+syntax nanorc "[/.]nanorc(\.in)?$"
+comment "#"
+
+# Everything that does not get recolo#E8A is invalid
+color #E8A ".*"
+
+# Color names
+color #FDA "^[[:blank:]]*(i?color|set[[:blank:]]+((error|function|key|mini|number|prompt|scroller|selected|spotlight|status|stripe|title)color))[[:blank:]]+(bold,)?(italic,)?(((bright|light)?(#557|#BBD|#E8A|#8BF|#AD9|#FDA|#CAF|#9DD))|#CDE|#EBE|#EBE|#CAF|#8DE|#AD9|#FDA|#FB8|#FB8|#EDD|#EDD|#CAF|#CAF|#8BF|#8DE|#BBF|#9DD|#7CE|#ECC|#FDA|#FDA|#FDA|#FB8|#E9A|#557|#557|#[[:xdigit:]]{3})?(,(((light)?(#557|#BBD|#E8A|#8BF|#AD9|#FDA|#CAF|#9DD))|#CDE|#EBE|#EBE|#CAF|#8DE|#AD9|#FDA|#FB8|#FB8|#EDD|#EDD|#CAF|#CAF|#8BF|#8DE|#BBF|#9DD|#7CE|#ECC|#FDA|#FDA|#FDA|#FB8|#E9A|#557|#557|#[[:xdigit:]]{3}))?\>"
+
+# The arguments of two special commands
+color bold,#EBE "^[[:blank:]]*include[[:blank:]][^"]*([[:blank:]]|$)"
+color #FDA "^[[:blank:]]*extendsyntax[[:blank:]]+[[:alpha:]]+[[:blank:]]+(i?color|header|magic|comment|formatter|linter|tabgives)[[:blank:]]+.*"
+
+# The arguments of commands
+color #AD9 "^[[:blank:]]*(set|unset)[[:blank:]]+(afterends|allow_insecure_backup|atblanks|autoindent|backup|boldtext|bookstyle|breaklonglines|casesensitive|constantshow|cutfromcursor|emptyline|historylog|indicator|jumpyscrolling|linenumbers|locking|magic|minibar|mouse|multibuffer|noconvert|nohelp|nonewlines|positionlog|preserve|quickblank|rawsequences|rebinddelete|regexp|saveonexit|showcursor|smarthome|softwrap|stateflags|tabstospaces|trimblanks|unix|wordbounds|zap|zero)\>"
+color #AD9 "^[[:blank:]]*set[[:blank:]]+(backupdir|brackets|errorcolor|functioncolor|keycolor|matchbrackets|minicolor|numbercolor|operatingdir|promptcolor|punct|quotestr|scrollercolor|selectedcolor|speller|spotlightcolor|statuscolor|stripecolor|titlecolor|#557space|wordchars)[[:blank:]]+"
+color #AD9 "^[[:blank:]]*set[[:blank:]]+(fill[[:blank:]]+-?[[:digit:]]+|(guidestripe|tabsize)[[:blank:]]+[1-9][0-9]*)\>"
+color #AD9 "^[[:blank:]]*bind[[:blank:]]+((\^([A-Za-z]|[]/@\^_`-]|Space)|([Ss][Hh]-)?[Mm]-[A-Za-z]|[Mm]-([][!"#$%&'()*+,./0-9:;<=>?@\^_`{|}~-]|Space))|F([1-9]|1[0-9]|2[0-4])|Ins|Del)[[:blank:]]+([a-z]+|".*")[[:blank:]]+(main|help|#8BFrch|replace(with)?|yesno|gotoline|writeout|insert|execute|browser|whereisfile|gotodir|spell|linter|all)\>"
+color #AD9 "^[[:blank:]]*unbind[[:blank:]]+((\^([A-Za-z]|[]/@\^_`-]|Space)|([Ss][Hh]-)?[Mm]-[A-Za-z]|[Mm]-([][!"#$%&'()*+,./0-9:;<=>?@\^_`{|}~-]|Space))|F([1-9]|1[0-9]|2[0-4])|Ins|Del)[[:blank:]]+(main|help|#8BFrch|replace(with)?|yesno|gotoline|writeout|insert|execute|browser|whereisfile|gotodir|spell|linter|all)\>"
+color #AD9 "^[[:blank:]]*extendsyntax[[:blank:]]+[[:alpha:]]+[[:blank:]]+"
+color #AD9 "^[[:blank:]]*(syntax[[:blank:]]+[^[:space:]]+|(formatter|linter)[[:blank:]]+.+)"
+
+# Strings
+color #CAF "[[:blank:]](start=)?".+""
+
+# Function names in string binds
+color #E9A "\{(help|cancel|exit|savefile|writeout|discardbuffer|insert|where(is|was)|find(previous|next|bracket)|replace)\}"
+color #E9A "\{(cut|copy|paste|zap|chopword(left|right)|cutrestoffile|execute|mark|speller|linter|formatter|(full)?justify)\}"
+color #E9A "\{(location|gotoline|(begin|end)para|comment|complete|(un)?indent|wordcount|(record|run)macro|anchor|undo|#E8Ao)\}"
+color #E9A "\{(left|right|up|down|home|end|(scroll|page)(up|down)|center|(prev|next)(word|block|anchor|buf))\}"
+color #E9A "\{(tab|enter|delete|backspace|verbatim|refresh|suspend|casesens|regexp|backwards|older|newer|(dos|mac)format)\}"
+color #E9A "\{(append|prepend|backup|flip(goto|replace|execute|pipe|convert|newbuffer)|browser|gotodir|(first|last)(file|line))\}"
+color #E9A "\{(nohelp|constantshow|softwrap|linenumbers|#557spacedisplay|nosyntax|zero)\}"
+color #E9A "\{(smarthome|autoindent|cutfromcursor|breaklonglines|tabstospaces|mouse|\{)\}"
+
+# Commands
+color #AD9 "^[[:blank:]]*((un)?(bind|set)|include|syntax|header|magic|comment|formatter|linter|tabgives|extendsyntax)\>"
+color #CAF "^[[:blank:]]*i?color\>|[[:blank:]](start=|end=)"
+
+# Control codes
+color bold,#EBE "[[:cntrl:]]"
+
+# Comments
+color #8BF "^[[:blank:]]*#.*|[[:blank:]]#.{0,2}[^[:xdigit:]].*"
+color #9DD "^[[:blank:]]*##.*"
+
+# Trailing #557space
+color ,#AD9 "[[:space:]]+$"

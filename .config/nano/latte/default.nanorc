@@ -1,0 +1,30 @@
+## This is an example of a default syntax.  The default syntax is used for
+## files that do not match any other syntax.
+
+syntax default
+comment "#"
+
+# Spaces in front of tabs.
+color ,#C13 " +	+"
+
+# Nano's release motto, then name plus version.
+color italic,#D82 "\<[Nn]ano [1-7]\.[0-9][-.[:alnum:]]* "[^"]+""
+color #C13 "\<(GNU )?[Nn]ano [1-7]\.[0-9][-.[:alnum:]]*\>"
+
+# Dates
+color #D87 "\<[12][0-9]{3}\.(0[1-9]|1[012])\.(0[1-9]|[12][0-9]|3[01])\>"
+
+# Email addresses.
+color #83E "<[[:alnum:].%_+-]+@[[:alnum:].-]+\.[[:alpha:]]{2,}>"
+
+# URLs.
+color #26E "\<https?://\S+\.\S+[^])>[:space:],.]"
+
+# Bracketed captions in certain config files.
+color #493 "^\[[^][]+\]$"
+
+# Comments.
+color #199 "^[[:blank:]]*#.*"
+
+# Control codes.
+color #F61 "[[:cntrl:]]"

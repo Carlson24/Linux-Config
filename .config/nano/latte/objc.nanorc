@@ -1,0 +1,39 @@
+## Syntax highlighting for C/C++/Obj-C files.
+
+syntax m "\.m$"
+magic "Objective-C source"
+comment "//"
+
+# Stuffs.
+color #BBC "\<[A-Z_][0-9A-Z_]+\>"
+color #493 "\<(float|double|BOOL|bool|char|int|short|long|id|sizeof|enum|void|static|const|struct|union|typedef|extern|(un)?signed|inline)\>"
+color #493 "\<[[:alpha:]_][[:alnum:]_]*_t\>"
+color #493 "\<(class|namespace|template|public|protected|private|typename|this|friend|virtual|using|mutable|volatile|register|explicit)\>"
+color #493 "\<(for|if|while|do|else|case|default|switch)\>"
+color #493 "\<(try|throw|catch|operator|new|delete)\>"
+color #493 "\<(goto|continue|break|return)\>"
+color #493 "@(encode|end|implementation|interface)|selector)\>"
+
+# GCC builtins.
+color #199 "__attribute__[[:blank:]]*\(\([^)]*\)\)|__(aligned|asm|builtin|hidden|inline|packed|restrict|section|typeof|weak)__"
+
+# Selector/method.
+color #83E "(^|[[:blank:]])\[.*[[:blank:]].*\]"
+color #AAB ":[[:alnum:]]*"
+color #83E "[[:alnum:]]*:"
+color #AAB "\[[^][:blank:]]*\]"
+
+# Strings.
+color #AAB "'([^'\]|\\(["'\abfnrtv]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
+color #AAB "<[^= 	]*>|"([^"\]|\\.)*""
+color #26E "@"([^"\]|\\.)*""
+
+# Preprocessor commands.
+color #26E "^[[:blank:]]*#[[:blank:]]*(define|include|import|(un|ifn?)def|endif|el(if|se)|if|warning|error)"
+
+# Comments.
+color #D82 "//.*"
+color #D82 start="/\*" end="\*/"
+
+# Trailing #AABspace.
+color ,#493 "[[:space:]]+$"

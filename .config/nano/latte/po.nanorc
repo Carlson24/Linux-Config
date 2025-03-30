@@ -1,0 +1,36 @@
+## Syntax highlighting for PO files.
+
+## Original author:  Benno Schulenberg
+## License:  GPL version 3 or newer
+
+syntax po "\.pot?$"
+comment "#"
+
+# Comments.
+color #493 "^#.*"
+color #D82 "Copyright|\(C\)"
+# Header fields.
+color #C13 "^"X-Bugs:.*"$"
+color #83E "\<(Project-Id-Version|Report-Msgid-Bugs-To|Last-Translator|Language(-Team)?|X-Bugs|X-Generator|Plural-Forms)\>"
+color #199 "\<(POT-Creation-Date|PO-Revision-Date|MIME-Version|Content-Type|Content-Transfer-Encoding)\>"
+# Encodings and numbers.
+color #D82 "\<(UTF|ISO|Windows|Mac|IBM)-[0-9]+"
+color #D82 "\<((pre|rc)?[0-9]+|[0-9]bit)\>"
+# Msgids.
+color #26E "^(msgid|msgid_plural|msgstr)\>"
+# Tags.
+color #C13 " fuzzy(,|$)"
+color #D82 " (no-)?[-[:alpha:]]+-format(,|$)"
+# Format specifiers.
+color #83E "%([1-9]\$)?[#0 +'I-]?(\*([1-9]\$)?|[1-9](\.[0-9]?)?)?[hlLjzt]?[diouxXeEfFgGaAcspnm%]"
+# Quotes and escaped characters.
+color #D82 """
+color #199 "\\([abcefnrtv"\]|x[[:xdigit:]]{2}|[0-7]{3})"
+# Reminders.
+color #BBC,#D82 "\<(FIXME|TODO|XXX)\>"
+# Obsolete strings.
+color #C13 "#~.*"
+# Stray control codes.
+color bold,#E7C,#C13 "[[:cntrl:]]"
+# Tabs.
+color #493 "[[:blank:]]"

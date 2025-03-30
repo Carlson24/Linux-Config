@@ -1,0 +1,26 @@
+## Syntax highlighting for XML files.
+
+syntax xml "\.([jrsx]html?|jnlp|mml|pom|rng|sgml?|svg|w[as]dl|wsdd|xjb|xml|xs(d|lt?)|xul)$"
+header "<\?xml.*version=.*\?>"
+magic "(XML|SGML) (sub)?document"
+comment "<!--|-->"
+
+# First the entire content of the tag (for the attributes):
+color #493 start="<" end=">"
+
+# The angled brackets and the name of the tag:
+color #199 "<[^> ]+|/?>"
+
+# The strings inside the tag:
+color #83E ""[^"]*""
+
+# Prolog stuff:
+color #888 "<\?.+\?>|<!DOCTYPE[^>]+>|\]>"
+color #888 start="<!DOCTYPE[^>]*$" end="^[^<]*>"
+
+# Comments:
+color #D82 start="<!--" end="-->"
+
+# Entities (custom and p#C13efined):
+color #E7C "&[^; ]+;"
+color #C13 "&(amp|apos|gt|lt|quot);"

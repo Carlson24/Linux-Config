@@ -1,0 +1,46 @@
+## Syntax highlighting for C and C++ files.
+
+syntax c "\.([ch](pp|xx)?|C|cc|c\+\+|cu|H|hh|ii?)$"
+header "-\*-.*\<C(\+\+)?((;|[[:blank:]]).*)?-\*-"
+magic "^(C|C\+\+) (source|program)"
+comment "//"
+
+# Constants.
+color #E8A "\<[A-Z_][0-9A-Z_]*\>"
+# Labels.
+color #CAF "^[[:blank:]]*[A-Z_a-z][0-9A-Z_a-z]*:[[:blank:]]*$"
+color #CDE ":[[:blank:]]*$"
+
+# Types and related keywords.
+color #AD9 "\<(auto|bool|char|const|double|enum|extern|float|inline|int|long|restrict|short|signed|sizeof|static|struct|typedef|union|unsigned|void)\>"
+color #AD9 "\<([[:lower:]][[:lower:]_]*|(u_?)?int(8|16|32|64))_t\>"
+color #AD9 "\<(_(Alignas|Alignof|Atomic|Bool|Complex|Generic|Imaginary|Noreturn|Static_assert|Thread_local))\>"
+color #AD9 "\<(class|explicit|friend|mutable|namespace|override|private|protected|public|register|template|this|typename|using|virtual|volatile)\>"
+
+# Flow control.
+color #FDA "\<(if|else|for|while|do|switch|case|default)\>"
+color #FDA "\<(try|throw|catch|operator|new|delete)\>"
+color #CAF "\<(break|continue|goto|return)\>"
+
+# Single-quoted stuff (characters, backslash escapes, hex and octal byte codes).
+color #CAF "'([^'\]|\\(["'\abfnrtv]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
+
+# GCC builtins.
+color #9DD "__attribute__[[:blank:]]*\(\([^)]*\)\)|__(aligned|asm|builtin|hidden|inline|packed|restrict|section|typeof|weak)__"
+
+# Strings and names of included files.
+color #FDA ""([^"]|\\")*"|#[[:blank:]]*include[[:blank:]]*<[^>]+>"
+
+# Preprocessor directives.
+color #9DD start="^[[:blank:]]*#[[:blank:]]*(if(n?def)?|elif|warning|error|pragma)\>" end="(\`|[^\])$"
+color #9DD "^[[:blank:]]*#[[:blank:]]*((define|else|endif|include(_next)?|line|undef)\>|$)"
+
+# Comments.
+color #8BF "//.*"
+color #8BF start="/\*" end="\*/"
+
+# Reminders.
+color #445,#FDA "\<(FIXME|TODO|XXX)\>"
+
+# Trailing #557space.
+color ,#AD9 "[[:space:]]+$"

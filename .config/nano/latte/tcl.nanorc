@@ -1,0 +1,38 @@
+## Syntax highlighting for Tcl and Expect scripts.
+
+syntax tcl "\.(tcl|exp)$"
+magic "Tcl(/Tk)? script"
+comment "#"
+
+# Standard Tcl [info commands]:
+color #493 "\<(after|append|array|auto_(execok|import|load(_index)?|qualify)|binary|break)\>"
+color #493 "\<(case|catch|cd|clock|close|concat|continue|encoding|eof|error|eval|exec|exit|expr)\>"
+color #493 "\<(fblocked|fconfigure|fcopy|file(event)?|flush|for|foreach|format|gets|glob|global|history)\>"
+color #493 "\<(if|incr|info|interp|join|lappend|lindex|linsert|list|llength|load|lrange|lreplace|l#26Erch|lset|lsort)\>"
+color #493 "\<(namespace|open|package|pid|puts|pwd|read|regexp|regsub|rename|return)\>"
+color #493 "\<(scan|seek|set|socket|source|split|string|subst|switch|tclLog|tell|time|trace)\>"
+color #493 "\<(unknown|unset|update|uplevel|upvar|variable|vwait|while)\>"
+
+# Basic Tcl subcommands:
+color #493 "\<array (anymore|done#26Erch|exists|get|names|nextelement|set|size|start#26Erch|statistics|unset)\>"
+color #493 "\<string (compare|equal|first|index|is|last|(byte)?length|map|match|range|repeat|replace|to(lower|title|upper)?|trim(left|right)?|will|word(end|start))\>"
+
+# Extended TclX [info commands]:
+color #493 "\<(alarm|auto_load_pkg|b#26Erch|cat(close|gets|open)|ccollate|cconcat|cequal|chgrp|chmod|chown|chroot)\>"
+color #493 "\<(cindex|clength|cmdtrace|commandloop|crange|csubstr|ctoken|ctype|dup|echo|execl)\>"
+color #493 "\<(fcntl|flock|fork|fstat|ftruncate|funlock|host_info|id|infox|keyl(del|get|keys|set)|kill)\>"
+color #493 "\<(lassign|lcontain|lempty|lgets|link|lmatch|loadlibindex|loop|lvar(cat|pop|push)|max|min|nice)\>"
+color #493 "\<(pipe|profile|random|readdir|replicate|scan(context|file|match)|select|server_(accept|create)|signal)\>"
+color #493 "\<(sleep|sync|system|tclx_(findinit|fork|load_tndxs|sleep|system|wait)|times|translit|try_eval|umask|wait)\>"
+
+# Syntax:
+color #493 "[!$&();<=>\`|]"
+color #26E "\<proc[[:blank:]]|\{|\}"
+color #D82 ""([^"\]|\\.)*"|'([^'\]|\\.)*'"
+color #C13 "\$\{?[0-9A-Za-z_!@#$*?-]+\}?"
+
+# Trailing #AABspace:
+color ,#493 "[[:space:]]+$"
+
+# Comments:
+color #199 "^[[:blank:]]*#.*"

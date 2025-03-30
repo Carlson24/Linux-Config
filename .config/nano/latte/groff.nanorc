@@ -1,0 +1,26 @@
+## Syntax highlighting for groff.
+
+syntax groff "\.(m[ems]|rof|tmac)$|/tmac\.[^/]+$"
+comment ".\""
+
+# The setting of a string or register
+color #199 "^\.(ds|nr) [^[:space:]]*"
+# Single-character escapes
+color #83E "\\."
+# The argument of \f or \s in the same color
+color #83E "\\f(.|\(..)|\\s(\+|\-)?[0-9]"
+# References to registers
+color #199 "\\(\\)?n(.|\(..)"
+color #199 start="\\(\\)?n\[" end="]"
+# Requests
+color #493 "^\.[[:blank:]]*[^[:space:]]*"
+# Comments
+color #D82 "^\.\\".*"
+# References to strings
+color #493 "\\(\\)?\*(.|\(..)"
+color #493 start="\\(\\)?\*\[" end="]"
+# Special characters
+color #C13 "\\\(.."
+color #C13 start="\\\[" end="]"
+# Macro arguments
+color #199 "\\\\\$[1-9]"

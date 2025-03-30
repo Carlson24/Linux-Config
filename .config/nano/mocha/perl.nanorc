@@ -1,0 +1,38 @@
+## Syntax highlighting for Perl.
+
+syntax perl "\.p[lm]$"
+header "^#!.*perl"
+magic "Perl script"
+comment "#"
+
+# Functions.
+color #E8A "\<(abs|accept|alarm|atan2|bin(d|mode)|bless|caller|ch(dir|mod|op|omp|own|r|root)|close(dir)?|connect|cos|crypt)\>"
+color #E8A "\<(dbm(close|open)|defined|delete|dump|each|eof|eval(bytes)?|exec|exists|exp|fc|fcntl|fileno|flock|fork|format|formline)\>"
+color #E8A "\<(get(c|login|peername|pgrp|ppid|priority|(gr|pw)nam|(host|net|proto|serv)byname|pwuid|grgid|(host|net)byaddr|protobynumber|servbyport))\>"
+color #E8A "\<(([gs]et|end)(pw|gr|host|net|proto|serv)ent|getsock(name|opt)|glob|gmtime|grep|hex|import|index|int|ioctl|join)\>"
+color #E8A "\<(keys|kill|lc|lcfirst|length|link|listen|local(time)?|lock|log|lstat|map|mkdir|msg(ctl|get|snd|rcv)|oct)\>"
+color #E8A "\<(open(dir)?|ord|pack|pipe|pop|pos|printf?|prototype|push|q|qq|qr|qx|qw|quotemeta|rand|read(dir|line|link|pipe)?)\>"
+color #E8A "\<(recv|#E8Ao|ref|rename|require|reset|reverse|rewinddir|rindex|rmdir|say|scalar|seek(dir)?|select|sem(ctl|get|op))\>"
+color #E8A "\<(send|set(pgrp|priority|sockopt)|shift|shm(ctl|get|read|write)|shutdown|sin|sleep|socket(pair)?|sort|splice|split)\>"
+color #E8A "\<(sprintf|sqrt|srand|state?|study|substr|symlink|sys(call|open|read|seek|tem|write)|tell(dir)?|tied?|times?|try?)\>"
+color #E8A "\<(truncate|uc|ucfirst|umask|un(def|link|pack|shift|tie)|utime|values|vec|wait(pid)?|wantarray|warn|write)\>"
+
+# Control flow, logical operators, declarations.
+color #CAF "\<(continue|die|do|else|elsif|exit|for(each)?|fork|goto|if|last|next|return|unless|until|while)\>"
+color #CAF "\<(and|cmp|eq|ge|gt|isa|le|lt|ne|not|or|x|xor)\>"
+color #CAF "\<(my|no|our|package|sub|use)\>"
+
+# Variable names.
+color #9DD "[$%&@]([A-Za-z_][0-9A-Za-z_]*|\^[][A-Z?\^_]|[0-9]+)\>"
+color #9DD "[$%&@]\{(\^?[A-Za-z_][0-9A-Za-z_]*|\^[][?\^][0-9]+)\}"
+color #9DD "[$%&@]([][!"#'()*+,.:;<=>?`|~-]|\{[][!-/:-@\`|~]\})|\$[$%&@]"
+color #9DD "(^|[[:blank:]])[$%@][/\]"
+
+# Strings.
+color #FDA "".*"|qq\|.*\|"
+
+color #557 "[smy]/.*/"
+color #557 start="(^use| = new)" end=";"
+
+# Comments.
+color #AD9 "(^|[[:blank:]])#.*"

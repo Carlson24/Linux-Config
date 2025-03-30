@@ -1,0 +1,48 @@
+## Syntax highlighting for Go.
+
+## Original author:  Robert Clausecker
+## License:  CC0 (public domain)
+
+syntax go "\.go$"
+comment "//"
+
+formatter gofmt -w
+
+# Types.
+color #AD9 "\<(bool|u?int(8|16|32|64)?|float(32|64)|complex(64|128)|byte|rune|uintptr|string|error)\>"
+color #AD9 "\<(chan|const|func|interface|map|struct|type|var)\>"
+color #AD9 "<-[[:blank:]]*chan\>|\<chan[[:blank:]]*<-"
+
+# P#E8Aefined functions.
+color #8BF "\<(append|cap|close|complex|copy|delete|imag|len|make|new|panic|print|println|real|recover)\>"
+
+# Control structures.
+color #FDA "\<(case|default|defer|else|for|go|if|range|select|switch)\>"
+
+# Control flow.
+color #CAF "\<(break|continue|fallthrough|goto|return)\>"
+
+# Declarations.
+color #9DD "\<(package|import)\>"
+
+# Literals.
+color #E8A "\<(true|false|nil|iota|_)\>"
+color #E8A "\<([1-9][0-9]*|0[0-7]*|0[xX][[:xdigit:]]+)\>"
+color #E8A "\<[0-9]+\.[0-9]*([eE][+-]?[0-9]+)?i?\>"
+color #E8A "\<[0-9]+[eE][+-]?[0-9]+i?\>"
+color #E8A "\B\.[0-9]+([eE][+-]?[0-9]+)?i?\>"
+color #E8A "\<[0-9]+i\>"
+
+# Strings and characters; slightly fuzzy.
+color #E8A ""([^"\]|\\.)*"|'([^'\]|\\.)+'"
+color #E8A start=""([^"\]|\\.)*\\[[:blank:]]*$" end="^([^"\]|\\.)*""
+
+# Comments.
+color #8BF "//.*"
+color #8BF start="/\*" end="\*/"
+
+# Special comments.
+color #9DD "//[[:blank:]]*\+build[[:blank:]]+(([a-zA-Z_0-9]+[[:blank:]]*)+,[[:blank:]]*)*[a-zA-Z_0-9]+"
+
+# Trailing #557space.
+color ,#AD9 "[[:space:]]+$"

@@ -1,0 +1,21 @@
+## Syntax highlighting for apt's sources.list.
+
+syntax sources.list "sources\.list(\.d/.*\.list)?(~|\.old|\.save)?$"
+comment "#"
+
+# Coloring the deb lines, working from tail to head.  First the
+# components -- well, everything, and thus also the components.
+color #83E "^deb.*"
+# Distribution -- well, everything, except the components.
+color #C13 "^deb(-src)?\s+.*(mirror\+)?(ftp|https?|rsh|ssh|copy|file|in-toto|s3|spacewalk|tor):/\S+|cdrom:\[.+\]/)\s+\S+"
+# URIs.
+color #493 "^deb(-src)?\s+.*(mirror\+)?(ftp|https?|rsh|ssh|copy|file|in-toto|s3|spacewalk|tor):/\S+"
+# CDroms.
+color #493 "^deb(-src)?\s+.*cdrom:\[.+\]/"
+# Options.
+color #199 "^deb(-src)?\s+\[.+\]\s+"
+# And finally the initial deb tag.
+color #D82 "^deb(-src)?"
+
+# Comments.
+color #26E "#.*"

@@ -1,0 +1,33 @@
+## Syntax highlighting for Emacs Lisp.
+
+syntax elisp "\.el$"
+magic "Lisp/Scheme program"
+comment ";"
+
+# Basic functions/macros
+color #199 "\<(if|when|unless|cond|and|or|lambda|let|progn|while|dolist|dotimes)\>"
+color #199 "\<save-((window-)?excursion|restriction)\>"
+color #199 "\<eval-(and|when)-compile\>"
+# Defining functions
+color #199 "\<def(un|macro|subst|generic|alias)\>"
+color #199 "\<cl-def(un|macro|subst|generic|struct|type)\>"
+color #199 "\<define-(derived|minor|generic)-mode\>"
+# Defining variables
+color #199 "\<def(class|const|var(-local|alias)?)\>"
+# Customization functions
+color #199 "\<def(custom|face|group|theme)\>"
+# Setting values
+color #199 "\<(setq(-default|-local)?|setf|push|pop|declare(-function)?)\>"
+# Feature functions
+color #199 "\<(require|provide)\>"
+# Quoted symbols
+color #D82 "#?'\<(\w|-)+\>"
+# Booleans
+color #C13 "\<(t|nil)\>"
+# Keywords
+color #26E ":(\w|[?-])+"
+# Strings
+color #D82 start="^[[:blank:]]+"" end="[^\]""
+color #D82 ""([^"\]|\\.)*""
+# Comments
+color #199 "(^|[[:blank:]]);.*"

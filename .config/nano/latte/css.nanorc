@@ -1,0 +1,20 @@
+## Syntax highlighting for CSS files.
+
+syntax css "\.css$"
+comment "/*|*/"
+
+# First make everything #C13:
+color #C13 "."
+# Then everything between braces #D82:
+color #D82 start="\{" end="\}"
+# Then everything after a colon #AAB:
+color #BBC start=":" end="([;^{]|$)"
+
+# Pseudo-classes:
+color #199 ":(active|checked|focus|hover|link|visited|after|before)\>"
+
+# Comments:
+color #26E start="/\*" end="\*/"
+
+# Syntactic characters:
+color #493 ";|:|\{|\}"

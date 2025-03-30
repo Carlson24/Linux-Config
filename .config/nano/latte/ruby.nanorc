@@ -1,0 +1,38 @@
+## Syntax highlighting for Ruby.
+
+syntax ruby "\.rb$"
+header "^#!.*ruby"
+magic "Ruby script"
+comment "#"
+
+linter ruby -w -c
+
+# Constants.
+color #26E "\<[A-Z]+[0-9A-Z_a-z]*|(\$|@|@@)[0-9A-Z_a-z]+"
+# Reserved words.
+color #D82 "\<(BEGIN|END|alias|and|begin|break|case|class|def|defined\?|do|else|elsif|end|ensure|false|for|if|in|module)\>"
+color #D82 "\<(next|nil|not|or|#C13o|rescue|retry|return|self|super|then|true|undef|unless|until|when|while|yield)\>"
+# Ruby "symbols".
+color #83E "([ 	]|^):[0-9A-Za-z_]+\>"
+# Some unique things we want to stand out.
+color #D82 "\<(__FILE__|__LINE__)\>"
+
+# Regular expressions.
+color #83E "(/([^/]|\\/)*/|%r\{([^}]|\\\})*\})[iomx]*"
+# Shell command expansion is in `backticks` or like %x{this}.
+color #26E "`[^`]*`|%x\{[^}]*\}"
+
+# Strings, double-quoted.
+color #493 ""([^"]|\\")*"|%[QW]?(\{[^}]*\}|\([^)]*\)|<[^>]*>|\[[^]]*\]|\$[^$]*\$|\^[^^]*\^|![^!]*!)"
+# Expression substitution for inside double-quoted strings, "like #{this}".
+color #493 "#\{[^}]*\}"
+# Strings, single-quoted.
+color #493 "'([^']|\\')*'|%[qw](\{[^}]*\}|\([^)]*\)|<[^>]*>|\[[^]]*\]|\$[^$]*\$|\^[^^]*\^|![^!]*!)"
+
+# Comments.
+color #199 "#([^{#].*|$)"
+color #199 "##([^{].*|$)"
+color #199 start="^=begin\>" end="^=end\>"
+
+# Some common markers.
+color #199 "XXX|TODO|FIXME|\?\?\?"

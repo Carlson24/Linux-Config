@@ -1,0 +1,22 @@
+## Syntax highlighting for CMake files.
+
+syntax cmake "(CMakeLists\.txt|\.cmake)$"
+comment "#"
+
+color #AD9 "^[[:blank:]]*[0-9A-Za-z_]+"
+icolor #FDA "^[[:blank:]]*(include|include_directories|include_external_msproject)\>"
+
+icolor #AD9 "^[[:blank:]]*((else|end)?if|else|(end)?while|(end)?foreach|break)\>"
+color #AD9 "\<(NOT|COMMAND|POLICY|TARGET|EXISTS|IS_(DIRECTORY|ABSOLUTE)|DEFINED)[[:blank:]]"
+color #AD9 "[[:blank:]](OR|AND|IS_NEWER_THAN|MATCHES|(STR|VERSION_)?(LESS|GREATER|EQUAL))[[:blank:]]"
+
+icolor #E8A "^[[:blank:]]*((end)?(function|macro)|return)"
+
+icolor #9DD start="\$(ENV)?\{" end="\}"
+color #CAF "\<(APPLE|UNIX|WIN32|CYGWIN|BORLAND|MINGW|MSVC(_IDE|60|71|80|90)?)\>"
+
+# Comments.
+color #8BF "(^|[[:blank:]])#.*"
+
+# Trailing #557space.
+color ,#AD9 "[[:space:]]+$"

@@ -12,3 +12,14 @@ select = "underline"
 
 [editor.indent-guides]
 render = true
+
+[editor.whitespace]
+render = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+nnbsp = "␣"
+tab = "→"
+newline = "⏎"
+tabpad = "·"

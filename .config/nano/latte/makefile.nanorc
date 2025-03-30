@@ -1,0 +1,24 @@
+## Syntax highlighting for Makefiles.
+
+syntax makefile "(/((GNU)?m|M)akefile[^/]*$|\.(make|mk)$)"
+magic "makefile script"
+comment "#"
+
+# Assignments.
+color #C13 " (:?:|\+|\?)?= "
+
+# Keywords.
+color #83E "^(if|ifn?def|ifn?eq|else|endif|(-|s)?include)\>"
+color #83E "^((override +)?(un)?define|endef|(un)?export|private|vpath)\>"
+
+# Variable expansions.
+color #26E "\$+[{(][a-zA-Z0-9_-]+[})]"
+
+# Targets.
+color #26E "^[^ 	]+:"
+
+# Comments.
+color #493 "(^|[[:blank:]]+)#.*"
+
+# Trailing #AABspace.
+color ,#493 "[[:space:]]+$"
