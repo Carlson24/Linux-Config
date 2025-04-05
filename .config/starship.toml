@@ -1,0 +1,101 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+continuation_prompt = '[▸▹ ](dimmed white)'
+
+format = """
+🐧 \
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$fill\
+$status\
+$cmd_duration\
+$container\
+$conda\
+$python\
+$golang\
+$nodejs\
+$rust\
+$time\
+\n$character"""
+
+[username]
+format = '[⭘ $user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_symbol = ''
+format = '[@$hostname]($style) '
+ssh_only = false
+
+[directory]
+read_only = ' 󰌾'
+truncation_length = 3
+truncation_symbol = '…/'
+
+[fill]
+symbol = '-'
+
+[time]
+format = '(\[[$time]($style)\])'
+time_format = '%T'
+disabled = false
+
+[character]
+success_symbol = '[◎](bold green)'
+error_symbol = '[○](italic purple)'
+
+[git_branch]
+symbol = ' '
+
+[git_commit]
+commit_hash_length = 6
+tag_symbol = ''
+
+[git_metrics]
+disabled = false
+format = '(\[[+$added]($added_style) [-$deleted]($deleted_style)\] )'
+added_style = 'italic green'
+deleted_style = 'italic red'
+ignore_submodules = true
+
+[git_status]
+format = '(\[[$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed]($style)\] )'
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+deleted = '[x](red)'
+modified = '[!](yellow)'
+untracked = '[?](bright-yellow)'
+
+[status]
+symbol = '🔴'
+success_symbol = '🟢'
+format ='( \[[$symbol $status]($style)\] )'
+map_symbol = true
+disabled = false
+
+[cmd_duration]
+format = '(\[took [$duration]($style)\] )'
+
+[conda]
+format = '(\[[$symbol($version)]($style)\] )'
+
+[container]
+format = '(\[[$symbol($version)]($style)\] )'
+
+[golang]
+format = '(\[[$symbol($version)]($style)\] )'
+
+[python]
+format = '(\[[$symbol($version)]($style)\] )'
+
+[nodejs]
+format = '(\[[$symbol($version)]($style)\] )'
+
+[rust]
+format = '(\[[$symbol($version)]($style)\] )'

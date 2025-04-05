@@ -1,6 +1,3 @@
-# Plugins Custom Setting
-source $ZSH_CUSTOM/plugins-custom.zsh
-
 # Fix "no matches found"
 setopt no_nomatch
 
@@ -19,7 +16,7 @@ else
 fi
 
 # Custom history file
-export HISTFILE="$XDG_DATA_HOME"/zsh/history
+export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/zsh/history
 
 # Ignore commands that start with spaces and duplicates.
 export HISTCONTROL=ignoreboth
@@ -31,11 +28,7 @@ export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 # shells instead of the default "last window closed" history.
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-# Anaconda
-[ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
-export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=true
-
-# Rust Toolchain
+# Rust Toolchain Mirrors
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 

@@ -1,178 +1,210 @@
-// Load with --load-config examples/2.jsonc
-// Note that you must replace the image path to an existing image to display it.
-
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "display": {
-    "separator": " "
+    "separator": " > ",
+    "bar": {
+      "charElapsed": "=",
+      "charTotal": "-",
+      "borderLeft": "[",
+      "borderRight": "]",
+      "width": 20
+    },
+    "color": {
+      "separator": "red"
+    }
   },
   "logo": {
     "source": "~/.config/fastfetch/nyarchlogo.png",
-    "width": 40,
-    "height": 20,
+    "width": 36,
+    "height": 18,
     "padding": {
-      "top": 6
+      "top": 7
     }
   },
   "modules": [
     {
-      "type": "host",
-      "key": "╭─󰌢 Host:",
-      "keyColor": "green"
-    },
-    {
-      "type": "cpu",
-      "key": "├─󰻠 CPU:",
-      "keyColor": "green"
-    },
-    {
-      "type": "gpu",
-      "key": "├─󰍛 GPU:",
-      "keyColor": "green"
-    },
-    {
-      "type": "physicaldisk",
-      "key": "├─ Disk:",
-      "keyColor": "green"
-    },
-    {
-      "type": "memory",
-      "key": "├─󰑭 Memory:",
-      "keyColor": "green"
-    },
-    {
-      "type": "swap",
-      "key": "├─󰓡 Swap:",
-      "keyColor": "green"
-    },
-    {
-      "type": "display",
-      "key": "├─󰍹 Display:",
-      "keyColor": "green"
-    },
-    {
-      "type": "bluetooth",
-      "key": "├─ Bluebooth:",
-      "keyColor": "green"
-    },
-    {
-      "type": "sound",
-      "key": "╰─ Sound:",
-      "keyColor": "green"
-    },
-    {
-      "type": "colors",
-      "paddingLeft": 4,
-      "symbol": "circle"
-    },
-    {
-      "type": "shell",
-      "key": "╭─ Shell:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "terminal",
-      "key": "├─ Terminal:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "terminalfont",
-      "key": "├─ Terminal Font:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "lm",
-      "key": "├─󰧨 Login Manager:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "de",
-      "key": "├─ Desktop Environment:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "wm",
-      "key": "├─ Windows manager:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "theme",
-      "key": "├─󰉼 Theme:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "icons",
-      "key": "├─󰀻 Icons:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "font",
-      "key": "├─ Font:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "wallpaper",
-      "key": "╰─󰸉 Wallpaper:",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "colors",
-      "paddingLeft": 4,
-      "symbol": "circle"
-    },
-
-    {
       "type": "title",
-      "key": "╭─ User:",
+      "key": " Account             ",
       "format": "{user-name}@{host-name}",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "os",
-      "key": "├─ OS:", // Just get your distro's logo off nerdfonts.com
+      "key": " Operation System    ", // Just get your distro's logo off nerdfonts.com
       "keyColor": "blue"
     },
     {
       "type": "kernel",
-      "key": "├─ Kernel:",
+      "key": " |  Kernel           ",
       "keyColor": "blue"
     },
     {
       "type": "initsystem",
-      "key": "├─󰿄 Init System:",
+      "key": " | 󰿄 Init System      ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "bootmgr",
+      "key": " |  Boot Manager     ",
       "keyColor": "blue"
     },
     {
       "type": "packages",
-      "key": "├─󰏖 Packages:",
+      "key": " | 󰮯 Packages         ", // Just get your package's logo off nerdfonts.com
       "keyColor": "blue"
     },
     {
       "type": "uptime",
-      "key": "├─󰅐 Uptime:",
+      "key": " |  Uptime           ",
       "keyColor": "blue"
     },
     {
-      "type": "media",
-      "key": "├─󰝚 Media:",
+      "type": "terminal",
+      "key": " |  Terminal         ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminalfont",
+      "key": "    |  Terminal Font ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminalsize",
+      "key": "    | 󰲎 Terminal Size ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminaltheme",
+      "key": "    | 󰔎 Terminal Theme",
+      "keyColor": "blue"
+    },
+    {
+      "type": "shell",
+      "key": "    |  Terminal Shell",
       "keyColor": "blue"
     },
     {
       "type": "localip",
-      "key": "├─󰩟 LocalIP:",
-      "compact": true,
-      "keyColor": "blue"
-    },
-    {
-      "type": "wifi",
-      "key": "├─ Wi-Fi:",
-      "format": "{ssid}",
+      "key": " | 󰩟 Local IP         ",
       "keyColor": "blue"
     },
     {
       "type": "locale",
-      "key": "╰─ Locale:",
+      "key": " |  Language         ",
       "keyColor": "blue"
+    },
+    {
+      "type": "de",
+      "key": " Desktop Environment ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "lm",
+      "key": " | 󰧨 Login Manager    ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wm",
+      "key": " |  Windows Manager  ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "theme",
+      "key": " | 󰉼 Global Theme     ",
+      "format": "{theme1}",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "font",
+      "key": " |  Display Font     ",
+      "format": "{font1}",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "cursor",
+      "key": " | 󰆿 Cursor Theme     ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wallpaper",
+      "key": " |  Wallpaper        ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "host",
+      "key": "󰌢 Laptop Computer     ",
+      "keyColor": "green"
+    },
+    {
+      "type": "board",
+      "key": " |  Board            ",
+      "keyColor": "green"
+    },
+    {
+      "type": "bios",
+      "key": "    |  BIOS          ",
+      "keyColor": "green"
+    },
+    {
+      "type": "cpu",
+      "key": " | 󰻠 CPU              ",
+      "format": "{name} {temperature}",
+      "temp": true,
+      "keyColor": "green"
+    },
+    {
+      "type": "cpu",
+      "key": "    | 󰋼 Specs         ",
+      "format": "Total: {cores-physical}C{cores-logical}T  Frequency: {freq-base}/{freq-max}",
+      "keyColor": "green"
+    },
+    {
+      "type": "cpuusage",
+      "key": "    | 󰓅 Usage         ",
+      "percent": {
+        "type": ["bar", "num"]
+      },
+      "keyColor": "green"
+    },
+    {
+      "type": "gpu",
+      "key": " | 󰾲 GPU              ",
+      "driverSpecific": true,
+      "format": "{name} @ {frequency}",
+      "temp": true,
+      "keyColor": "green"
+    },
+    {
+      "type": "display",
+      "key": " | 󰍹 Display          ",
+      "keyColor": "green"
+    },
+    {
+      "type": "memory",
+      "key": " | 󰍛 Memory           ",
+      "percent": {
+        "type": ["bar", "num", "num-color"]
+      },
+      "keyColor": "green"
+    },
+    {
+      "type": "physicaldisk",
+      "key": " | 󰋊 Physical Disk    ",
+      "format": "[{interconnect}|{physical-type}] {dev-path} {name}",
+      "keyColor": "green"
+    },
+    {
+      "type": "battery",
+      "key": " |  Battery          ",
+      "percent": {
+        "type": ["bar", "num", "hide-others"]
+      },
+      "keyColor": "green"
+    },
+    {
+      "type": "custom",
+      "key": " Color               ",
+      "format": " {#90}󰮯 {#31}󰮯 {#32}󰮯 {#33}󰮯 {#34}󰮯 {#35}󰮯 {#36}󰮯 {#37}󰮯 {#38}󰮯 {#39}󰮯 {#90}󰮯 {#31}󰮯 {#32}󰮯 {#33}󰮯 {#34}󰮯 {#35}󰮯 {#36}󰮯 {#37}󰮯 {#38}󰮯 {#39}󰮯"
     }
   ]
 }

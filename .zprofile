@@ -43,7 +43,7 @@ export PROTON_ENABLE_NVAPI=1
 export PROTON_ENABLE_NGX_UPDATER=1
 
 ### Java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+# export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 ### Kwallet
 export GIT_ASKPASS=/usr/bin/ksshaskpass
@@ -109,10 +109,10 @@ export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
 ### Zsh
-export HISTFILE="$XDG_DATA_HOME"/zsh/history
+export HISTFILE="$XDG_CACHE_HOME"/zsh/history
 export ZSH="$XDG_DATA_HOME"/zsh/oh-my-zsh
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME"/zsh
-export ZSH_COMPDUMP="$XDG_DATA_HOME"/zsh/zcompdump
+export ZSH_COMPDUMP="$XDG_CACHE_HOME"/zsh/zcompdump
 
 ### Sync All Environment to systemd
 command -v dbus-update-activation-environment &> /dev/null && \

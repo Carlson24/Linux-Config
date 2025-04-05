@@ -25,6 +25,9 @@
 :sshguard - [0:0]
 -A ufw-before-input -p tcp --dport 22 -j sshguard
 
+# dae make sure Binding to LAN working
+-A ufw-before-input -m mark --mark 0x8000000 -j ACCEPT
+
 # quickly process packets for which we already have a connection
 -A ufw-before-input -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A ufw-before-output -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT

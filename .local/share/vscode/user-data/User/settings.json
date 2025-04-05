@@ -1,9 +1,8 @@
 {
-  "accessibility.dimUnfocused.enabled": true,
   "chat.commandCenter.enabled": false,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "'Maple Mono NF CN', 'Twemoji Mozilla', 'Cascadia Code NF', 'monospace'",
+  "editor.fontFamily": " 'Cascadia Code NF', 'Maple Mono Normal NF CN', 'Twemoji Mozilla', 'Cascadia Code NF', 'monospace'",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.formatOnPaste": true,
@@ -11,7 +10,6 @@
   "editor.formatOnType": true,
   "editor.renderWhitespace": "all",
   "editor.semanticHighlighting.enabled": true,
-  "editor.smoothScrolling": true,
   "editor.tabCompletion": "on",
   "files.autoGuessEncoding": true,
   "files.autoSave": "afterDelay",
@@ -36,5 +34,6 @@
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
-  }
+  },
+  "go.toolsManagement.autoUpdate": true
 }
