@@ -1,19 +1,19 @@
 # Add in zsh plugins
 zinit wait lucid for \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        zdharma-continuum/fast-syntax-highlighting \
-    blockf zsh-users/zsh-completions \
-    atload"!_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+  blockf zsh-users/zsh-completions \
+  atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust \
-    petronny/pinyin-completion \
-    Aloxaf/fzf-tab \
-    MichaelAquilina/zsh-auto-notify \
-    Freed-Wu/fzf-tab-source
+  zdharma-continuum/zinit-annex-as-monitor \
+  zdharma-continuum/zinit-annex-bin-gem-node \
+  zdharma-continuum/zinit-annex-patch-dl \
+  zdharma-continuum/zinit-annex-rust \
+  petronny/pinyin-completion \
+  Aloxaf/fzf-tab \
+  Freed-Wu/fzf-tab-source \
+  MichaelAquilina/zsh-auto-notify
 
 # Add in snippets
 zinit snippet OMZP::command-not-found

@@ -1,0 +1,23 @@
+# == Blocks ==
+# This specifies the columns and their order when using the long and the tree
+# layout.
+# Possible values: permission, user, group, context, size, date, name, inode, links, git
+blocks:
+  - name
+  - size
+  - date
+  - permission
+  - user
+  - group
+
+color:
+  when: always
+  theme: custom
+
+date: '+%Y/%m/%d %H:%M'
+
+icons:
+  when: always
+
+sorting:
+  dir-grouping: first

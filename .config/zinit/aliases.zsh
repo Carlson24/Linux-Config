@@ -2,7 +2,7 @@
 # uutils coreutils is a cross-platform reimplementation of the GNU coreutils in Rust.
 # While all programs have been implemented, some options might be missing or different behavior might be experienced.
 if (( $+commands[uu-coreutils] )); then
-  source "${ZSH_CONFIG_PATH}/aliasex-uutils-coreutils.zsh"
+  source "${ZSH_CONFIG_PATH}/aliases-uutils-coreutils.zsh"
 fi
 
 # Custom axel

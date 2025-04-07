@@ -113,4 +113,4 @@ export HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zinit/history"
 
 ### Sync All Environment to systemd
 command -v dbus-update-activation-environment &> /dev/null && \
-    dbus-update-activation-environment --systemd --all 2> /dev/null
+  dbus-update-activation-environment --systemd --all 2> /dev/null
