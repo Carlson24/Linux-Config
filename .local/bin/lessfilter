@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mime=$(file -Lbs --mime-type "$1")
+category=${mime%%/*}
+
+if [ -d "$1" ]; then
+    eza -hl --git --color=always --icons=always "$1"
+elif [ "$category" = image ]; then
+    chafa -f symbols "$1"
+elif [ "$category" = text ]; then
+    bat --color=always "$1"
+else
+    exit 1
+fi

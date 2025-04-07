@@ -1,33 +1,36 @@
-# Path to your Oh My Zsh installation.
-export ZSH="${XDG_DATA_HOME:-$HOME/.local/share}"/zsh/oh-my-zsh
-export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"/zsh
-export ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}"/zsh/zcompdump
+# zmodload zsh/datetime
+# setopt PROMPT_SUBST
+# PS4='+$EPOCHREALTIME %N:%i> '
+# logfile=$(mktemp zsh_profile.XXXXXXXX)
+# echo "Logging to $logfile"
+# exec 3>&2 2>$logfile
+# setopt XTRACE
 
-# Loading Plugins
-plugins=(
-    'fzf' 'zsh-interactive-cd' 'thefuck'
-    'gpg-agent' 'safe-paste' 'zoxide'
-    'shell-proxy' 'git' 'rust' 'ufw'
-)
-# Auto Notify & Auto Suggestions & Command not found & Fast Syntax Highlighting
-source /usr/share/zsh/plugins/zsh-auto-notify/auto-notify.plugin.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# Set the directory we want to store zsh config
+export ZSH_CONFIG_PATH="${XDG_CONFIG_HOME:-${HOME}/.config}/zinit"
 
-source $ZSH/oh-my-zsh.sh
+# Load zinit
+source "${ZSH_CONFIG_PATH}/zinit-load.zsh"
 
-# Plugins Custom Setting
-source $ZSH/../plugins-custom.zsh
+# Load plugins
+source "${ZSH_CONFIG_PATH}/plugins.zsh"
 
-# User configuration
-source $ZSH/../userconfig.zsh
+# Load Keybinds
+source "${ZSH_CONFIG_PATH}/keybinds.zsh"
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs, plugins, and themes.
-source $ZSH/../aliases.zsh
+# Load history styling
+source "${ZSH_CONFIG_PATH}/history.zsh"
 
-# Use Starship replace zsh theme
-if (( $+commands[starship] )); then
-  unset ZSH_THEME
-  eval "$(starship init zsh)"
-fi
+# Load aliases
+source "${ZSH_CONFIG_PATH}/aliases.zsh"
+
+# Load user config
+source "${ZSH_CONFIG_PATH}/userconfig.zsh"
+
+# Shell integrations
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+source <(fzf --zsh)
+
+# unsetopt XTRACE
+# exec 2>&3 3>&-

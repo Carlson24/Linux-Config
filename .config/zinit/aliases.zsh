@@ -2,7 +2,7 @@
 # uutils coreutils is a cross-platform reimplementation of the GNU coreutils in Rust.
 # While all programs have been implemented, some options might be missing or different behavior might be experienced.
 if (( $+commands[uu-coreutils] )); then
-  source $ZSH/../uutils-coreutils.zsh
+  source "${ZSH_CONFIG_PATH}/aliasex-uutils-coreutils.zsh"
 fi
 
 # Custom axel
@@ -34,6 +34,9 @@ fi
 
 # Start kate always silent
 alias kate="kate > /dev/null 2>&1"
+
+#Make subversion comply with XDG Base Directory Specification
+alias svn="svn --config-dir ${XDG_CONFIG_HOME:-$HOME/.config}/subversion"
 
 # Make wget comply with XDG Base Directory Specification
 alias wget="wget --hsts-file=${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"
