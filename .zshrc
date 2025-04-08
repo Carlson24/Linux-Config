@@ -26,8 +26,6 @@ done
 
 # Shell integrations
 eval "$(starship init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-source <(fzf --zsh)
 
 # unsetopt XTRACE
 # exec 2>&3 3>&-

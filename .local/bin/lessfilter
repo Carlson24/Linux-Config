@@ -8,7 +8,7 @@ if [ -d "$1" ]; then
 elif [ "$category" = image ]; then
     chafa -f symbols "$1"
 elif [ "$category" = text ]; then
-    bat --color=always "$1"
+    prettybat --color=always "$1"
 else
     exit 1
 fi

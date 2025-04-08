@@ -3,6 +3,7 @@ declare -A ZINIT=(
   [BIN_DIR]="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
   [HOME_DIR]="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit"
   [ZCOMPDUMP_PATH]="${XDG_CACHE_HOME:-${HOME}/.cache}/zinit/zcompdump"
+  [NO_ALIASES]=1
 )
 
 # Set the directory we want to store zinit and plugins

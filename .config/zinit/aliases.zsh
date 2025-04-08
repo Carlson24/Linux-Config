@@ -2,7 +2,22 @@
 # uutils coreutils is a cross-platform reimplementation of the GNU coreutils in Rust.
 # While all programs have been implemented, some options might be missing or different behavior might be experienced.
 if (( $+commands[uu-coreutils] )); then
-  source "${ZSH_CONFIG_PATH}/aliases-uutils-coreutils.zsh"
+  declare -a uutils=(
+    arch  base32 base64 basename basenc cat chgrp chmod chown
+    chroot cksum comm coreutils cp csplit cut  date dd df dir
+    dircolors dirname du  echo env expand expr  factor  false
+    fmt fold  groups  hashsum head hostid hostname id install
+    join  kill link  ln logname ls  mkdir mkfifo mknod mktemp
+    more mv nice nl nohup nproc numfmt od paste pathchk pinky
+    pr printenv printf ptx pwd readlink realpath rm rmdir seq
+    shred shuf sleep sort split stat stdbuf sum sync tac tail
+    tee test  timeout touch tr  true truncate tsort tty uname
+    unexpand uniq  unlink uptime users vdir wc who whoami yes
+  )
+  for uutils in ${uutils[@]}
+  do
+    alias ${uutils}="uu-${uutils}"
+  done
 fi
 
 # Custom axel
@@ -35,7 +50,10 @@ fi
 # Start kate always silent
 alias kate="kate > /dev/null 2>&1"
 
-#Make subversion comply with XDG Base Directory Specification
+# Show Kwin DebugConsole
+alias kwinsdc="qdbus6 org.kde.KWin /KWin org.kde.KWin.showDebugConsole"
+
+# Make subversion comply with XDG Base Directory Specification
 alias svn="svn --config-dir ${XDG_CONFIG_HOME:-$HOME/.config}/subversion"
 
 # Make wget comply with XDG Base Directory Specification
