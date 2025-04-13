@@ -10,29 +10,29 @@ zinit wait lucid light-mode for \
   petronny/pinyin-completion \
   MichaelAquilina/zsh-auto-notify \
   MichaelAquilina/zsh-you-should-use \
-  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+  atinit"zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
-  blockf \
-    zsh-users/zsh-completions \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
 
 # Add in snippets
-zinit ice wait lucid as"completion"
-zinit snippet OMZP::ufw/_ufw
-zinit ice wait lucid as"completion"
-zinit snippet OMZP::rust/_rustc
-zinit ice wait lucid
-zinit snippet OMZP::fzf
-zinit ice wait lucid
-zinit snippet OMZP::zoxide
-zinit ice wait lucid
-zinit snippet OMZP::thefuck
-zinit ice wait lucid
-zinit snippet OMZP::gpg-agent
-zinit ice wait lucid
-zinit snippet OMZP::command-not-found
+declare -a omzp=(
+  fzf
+  sudo
+  podman
+  zoxide
+  systemd
+  thefuck
+  gpg-agent
+  safe-paste
+  command-not-found
+)
+for omzp in ${omzp[@]}
+do
+  zinit ice wait lucid
+  zinit snippet OMZP::"${omzp}"
+done
 
 # Auto Notify styling
 export AUTO_NOTIFY_THRESHOLD=10
@@ -51,9 +51,9 @@ zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-# You Should Use styling
-export YSU_MESSAGE_FORMAT="$(tput setaf 5)杂鱼! 对于命令 %command, \
-你忘记你设置了 %alias_type %alias=\"%command\" 吗!$(tput sgr0)"
+# You Should Use
+export YSU_HARDCORE=1
+export YSU_MESSAGE_POSITION=after
 
 # Zoxide replace cd
 export ZOXIDE_CMD_OVERRIDE=cd

@@ -2,29 +2,17 @@
 # uutils coreutils is a cross-platform reimplementation of the GNU coreutils in Rust.
 # While all programs have been implemented, some options might be missing or different behavior might be experienced.
 if (( $+commands[uu-coreutils] )); then
-  declare -a uutils=(
-    arch  base32 base64 basename basenc cat chgrp chmod chown
-    chroot cksum comm coreutils cp csplit cut  date dd df dir
-    dircolors dirname du  echo env expand expr  factor  false
-    fmt fold  groups  hashsum head hostid hostname id install
-    join  kill link  ln logname ls  mkdir mkfifo mknod mktemp
-    more mv nice nl nohup nproc numfmt od paste pathchk pinky
-    pr printenv printf ptx pwd readlink realpath rm rmdir seq
-    shred shuf sleep sort split stat stdbuf sum sync tac tail
-    tee test  timeout touch tr  true truncate tsort tty uname
-    unexpand uniq  unlink uptime users vdir wc who whoami yes
-  )
-  for uutils in ${uutils[@]}
-  do
-    alias ${uutils}="uu-${uutils}"
+  declare -a uutils=(/usr/bin/uu-*)
+  export deleteuu="/usr/bin/uu-"
+  uutils=("${(@)uutils:#$deleteuu\[}")   # "alias [=uu-[" will cause errors, delete it.
+  for command in "${uutils[@]}"; do
+    commanduu=${command#$deleteuu}
+    alias ${commanduu}="uu-${commanduu}"
   done
 fi
 
-# Custom axel
-alias axel="axel -n 2"
-
-# Use bat and bat-extra to replace bat, cat, man
-if (( $+commands[batman] )); then
+# Use bat and bat-extra to replace bat, cat, man, rg
+if (( $+commands[prettybat] )); then
   alias bat="prettybat"
   alias cat="prettybat"
   alias man="batman"
@@ -47,11 +35,26 @@ if (( $+commands[lsd] )); then
   alias lt="lsd -a --tree --group-directories-first --color=always --icon=always"
 fi
 
-# Start kate always silent
-alias kate="kate > /dev/null 2>&1"
+# Always show details for these commands
+alias cp="cp -v"
+alias mv="mv -v"
+alias rm="rm -v"
+alias mkdir="mkdir -v"
+
+# Fast return to directory
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
 
 # Show Kwin DebugConsole
 alias kwinsdc="qdbus6 org.kde.KWin /KWin org.kde.KWin.showDebugConsole"
+
+# Start kate always silent
+alias kate="kate > /dev/null 2>&1"
+
+# Update zinit completions
+alias zinit-updatecompletions="zinit cclear -q && zinit creinstall -q /usr/share/zsh/site-functions"
 
 # Make subversion comply with XDG Base Directory Specification
 alias svn="svn --config-dir ${XDG_CONFIG_HOME:-$HOME/.config}/subversion"

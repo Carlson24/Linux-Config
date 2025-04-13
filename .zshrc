@@ -6,6 +6,9 @@
 # exec 3>&2 2>$logfile
 # setopt XTRACE
 
+# Shell integrations
+eval "$(starship init zsh)"
+
 # Set the directory we want to store zsh config
 export ZSH_CONFIG_PATH="${XDG_CONFIG_HOME:-${HOME}/.config}/zinit"
 
@@ -18,14 +21,9 @@ declare -a config=(
   aliases
   userconfig
 )
-
-for config in ${config[@]}
-do
+for config in ${config[@]}; do
   source "${ZSH_CONFIG_PATH}/${config}.zsh"
 done
-
-# Shell integrations
-eval "$(starship init zsh)"
 
 # unsetopt XTRACE
 # exec 2>&3 3>&-

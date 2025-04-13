@@ -1,12 +1,14 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-palette = "catppuccin_mocha"
+palette = 'catppuccin_mocha'
 
-continuation_prompt = '[▸▹ ](dimmed white)'
+continuation_prompt = '[▸▹▹ ](dimmed white)'
 
 format = """
 $username\
+$hostname\
 $directory\
+$jobs\
 $git_branch\
 $git_commit\
 $git_state\
@@ -18,93 +20,209 @@ $cmd_duration\
 $container\
 $conda\
 $python\
+$dotnet\
 $golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$kotlin\
+$lua\
 $nodejs\
+$package\
+$perl\
+$php\
+$rlang\
+$ruby\
 $rust\
+$typst\
+$zig\
 $time\
-\n$character"""
+$line_break\
+$character"""
 
 [username]
-format = '(\[[$user]($style):)'
+format = '(\[[$user]($style))'
 disabled = false
 show_always = true
 
 [hostname]
+format = '(@[$ssh_symbol$hostname]($style))'
+disabled = false
 ssh_symbol = ''
-format = '(@[$hostname]($style) )'
-ssh_only = false
+ssh_only = true
 
 [directory]
-format = '([$path]($style)[$read_only]($read_only_style)\] )'
-style = "bold lavender"
+format = '([:$path]($style)[$read_only]($read_only_style)\] )'
+disabled = false
+style = 'bold lavender'
 read_only = ' 󰌾'
+read_only_style = 'red'
 truncation_length = 4
 truncation_symbol = '…/'
+truncate_to_repo = true
+
+[jobs]
+format = '(\([$symbol ($number)]($style)\) )'
+disabled = false
+style = 'blue'
+symbol = '▶'
+symbol_threshold = 1
+number_threshold = 2
+
+[git_branch]
+format = '([$symbol$branch(:$remote_branch)]($style) )'
+disabled = false
+style = 'bold mauve'
+symbol = ' '
+always_show_remote = true
+
+[git_commit]
+format = '[\($hash$tag\)]($style) '
+disabled = false
+commit_hash_length = 6
+tag_symbol = ''
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+disabled = false
+
+[git_metrics]
+format = '(\[[+$added]($added_style) [-$deleted]($deleted_style)\] )'
+disabled = false
+added_style = 'green'
+deleted_style = 'red'
+ignore_submodules = true
+
+[git_status]
+format = '(\[[$all_status$ahead_behind]($style)\] )'
+disabled = false
+conflicted = '[=${count}](red)'
+ahead = '[⇡${count}](sapphire)'
+behind = '[⇣${count}](sapphire)'
+diverged = '[⇕⇡${ahead_count}⇣${behind_count}](sapphire)'
+untracked = '[?${count}](maroon)'
+stashed = '[\$${count}](rosewater)'
+modified = '[!${count}](tela)'
+staged = '[+${count}](green)'
+renamed = '[»${count}](flamingo)'
+deleted = '[x${count}](pink)'
 
 [fill]
+disabled = false
+style = 'dimmed overlay1'
 symbol = '-'
+
+[status]
+format = '( \[[$symbol $status]($style)\] )'
+disabled = false
+map_symbol = true
+symbol = ''
+success_symbol = ''
+signal_symbol = ''
+sigint_symbol = ''
+success_style = 'green'
+failure_style = 'bold red'
+pipestatus = true
+pipestatus_format = '( \[$pipestatus\] => \[[$symbol $status]($style)\] )'
+pipestatus_segment_format = '([$status]($style))'
+
+[cmd_duration]
+format = '(\[took [$duration]($style)\] )'
+disabled = false
+
+[container]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[conda]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[python]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[dotnet]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[golang]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[gradle]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[haskell]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[java]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[julia]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[kotlin]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[lua]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[nodejs]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[package]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[perl]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[php]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[rlang]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[ruby]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[rust]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[typst]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
+
+[zig]
+format = '(\[[$symbol($version)]($style)\] )'
+disabled = false
 
 [time]
 format = '(\[[$time]($style)\])'
 time_format = '%T'
 disabled = false
 
+[line_break]
+disabled = false
+
 [character]
-success_symbol = "[[󰄛](green) ❯](peach)"
-error_symbol = "[[󰄛](red) ❯](peach)"
-vimcmd_symbol = "[󰄛 ❮](subtext1)"
-
-[git_branch]
-symbol = ' '
-style = "bold mauve"
-
-[git_commit]
-commit_hash_length = 6
-tag_symbol = ''
-
-[git_metrics]
-disabled = false
-format = '(\[[+$added]($added_style) [-$deleted]($deleted_style)\] )'
-added_style = 'italic green'
-deleted_style = 'italic red'
-ignore_submodules = true
-
-[git_status]
-format = '(\[[$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed]($style)\] )'
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
-deleted = '[x](red)'
-modified = '[!](yellow)'
-untracked = '[?](bright-yellow)'
-
-[status]
-symbol = '🔴'
-success_symbol = '🟢'
-format ='( \[[$symbol $status]($style)\] )'
-map_symbol = true
-disabled = false
-
-[cmd_duration]
-format = '(\[took [$duration]($style)\] )'
-
-[conda]
-format = '(\[[$symbol($version)]($style)\] )'
-
-[container]
-format = '(\[[$symbol($version)]($style)\] )'
-
-[golang]
-format = '(\[[$symbol($version)]($style)\] )'
-
-[python]
-format = '(\[[$symbol($version)]($style)\] )'
-
-[nodejs]
-format = '(\[[$symbol($version)]($style)\] )'
-
-[rust]
-format = '(\[[$symbol($version)]($style)\] )'
+success_symbol = '[[󰄛](green) ❯](peach)'
+error_symbol = '[[󰄛](red) ❯](peach)'
+vimcmd_symbol = '[󰄛 ❮](subtext1)'
 
 [palettes.catppuccin_latte]
 rosewater = "#dc8a78"

@@ -10,9 +10,9 @@ export LANGUAGE="zh_CN.UTF-8"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR="vim"
 else
-  export EDITOR='helix'
+  export EDITOR="helix"
 fi
 
 # Rust Toolchain Mirrors
