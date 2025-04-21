@@ -28,8 +28,7 @@ declare -a omzp=(
   safe-paste
   command-not-found
 )
-for omzp in ${omzp[@]}
-do
+for omzp in ${omzp[@]}; do
   zinit ice wait lucid
   zinit snippet OMZP::"${omzp}"
 done

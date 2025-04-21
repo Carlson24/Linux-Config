@@ -21,8 +21,8 @@ declare -a config=(
   aliases
   userconfig
 )
-for config in ${config[@]}; do
-  source "${ZSH_CONFIG_PATH}/${config}.zsh"
+for _config in ${config[@]}; do
+  source "${ZSH_CONFIG_PATH}/${_config}.zsh"
 done
 
 # unsetopt XTRACE

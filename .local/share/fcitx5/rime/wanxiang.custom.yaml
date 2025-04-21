@@ -1,0 +1,55 @@
+patch:
+  speller/algebra:
+    __patch:
+    - wanxiang.schema:/全拼             # 主方案
+    - wanxiang.schema:/fuzhu_zrm
+    - wanxiang.schema:/mohuyin
+  menu/page_size: 8                     # 候选项 8 个
+  switches/@7:
+    name: fuzhu_switch
+    states: [ 助, 辅 ]
+    reset: 1                            # 默认启用辅助
+  translator/user_dict: wanxiangzrm     # 用户词典的文件名称
+  translator/enable_user_dict: true     # 开启自动调频
+  translator/disable_user_dict_for_patterns: "^[a-z]{1,6}"  # 基本的6码3字不调频
+  translator/enable_correction: true    # 开启自动纠错
+  custom_phrase/user_dict: zrmuserdict  # 自定义词典
+  recognizer/patterns/quick_symbol: "^'.*$"
+  recognizer/patterns/quick_text: "^;.*$"
+  quick_symbol_text:
+    q: "‰"
+    w: "？"
+    e: "（"
+    r: "）"
+    t: "~"
+    y: "·"
+    u: "『"
+    i: "』"
+    o: "〖"
+    p: "〗"
+    a: "！"
+    s: "……"
+    d: "、"
+    f: "“"
+    g: "”"
+    h: "‘"
+    j: "’"
+    k: "【"
+    l: "】"
+    z: "。”"
+    x: "？”"
+    c: "！”"
+    v: "——"
+    b: "%"
+    n: "《"
+    m: "》"
+    "1": "①"
+    "2": "②"
+    "3": "③"
+    "4": "④"
+    "5": "⑤"
+    "6": "⑥"
+    "7": "⑦"
+    "8": "⑧"
+    "9": "⑨"
+    "0": "⓪"

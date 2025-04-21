@@ -21,8 +21,12 @@ export VISUAL=helix
 export SUDO_EDITOR=helix
 
 ### Fcitx5
-export QT_IM_MODULES="wayland;fcitx;ibus"
-export XMODIFIERS="@im=fcitx"
+# export GLFW_IM_MODULE=ibus
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export QT_IM_MODULES="wayland;fcitx;ibus"
+# export SDL_IM_MODULE=fcitx
+# export XMODIFIERS="@im=fcitx"
 
 ### GnuPG
 export GNUPGHOME="${XDG_DATA_HOME:-${HOME}/.locale/share}/gnupg"

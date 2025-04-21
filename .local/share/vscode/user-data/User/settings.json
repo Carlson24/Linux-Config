@@ -2,7 +2,7 @@
   "chat.commandCenter.enabled": false,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": " 'Cascadia Code NF', 'Maple Mono Normal NF CN', 'Twemoji Mozilla', 'Cascadia Code NF', 'monospace'",
+  "editor.fontFamily": "'Maple Mono Normal NF CN',  'Cascadia Code NF',  'Twemoji Mozilla', 'Cascadia Code NF', 'monospace'",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.formatOnPaste": true,
@@ -35,5 +35,23 @@
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "extensions.ignoreRecommendations": true,
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "editor.tabSize": 2,
+  "editor.stickyTabStops": true,
+  "cSpell.userWords": [
+    "archlinux",
+    "Cachy",
+    "cachyos",
+    "keyserver",
+    "typora",
+    "wanxiang"
+  ],
+  "[properties]": {
+    
+  }
 }

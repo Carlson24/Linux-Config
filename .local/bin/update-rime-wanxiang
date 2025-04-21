@@ -1,34 +1,30 @@
 #!/bin/bash
 
-export TMP=/tmp
-export RIME="$XDG_DATA_HOME"/fcitx5/rime
+export TMP="/tmp"
+export RIME="${XDG_DATA_HOME:-${HOME}/.local/share}/fcitx5/rime"
 export URL="https://github.com/amzxyz"
-export VER="v6.2"
+export VER="v6.4.5"
 
 ## Download wanxiang schema
-axel  -o "$TMP" "$URL"/rime_wanxiang_pro/releases/download/"$VER"/wanxiang-zrm-fuzhu.zip || exit 1
-unzip -o "$TMP"/wanxiang-zrm-fuzhu.zip -d "$TMP"                                         || exit 1
-rm    -v "$TMP"/wanxiang-zrm-fuzhu/custom_phrase.txt                                     || exit 1
-cp  -rvf "$TMP"/wanxiang-zrm-fuzhu/* "$RIME"                                             || exit 1
+axel -n 2 -o ${TMP} ${URL}/rime_wanxiang_pro/releases/download/${VER}/wanxiang-zrm-fuzhu.zip || exit 1
+unzip    -qo ${TMP}/wanxiang-zrm-fuzhu.zip -d ${TMP}                                         || exit 1
 
 ## Download dicts
-axel  -o "$TMP" "$URL"/rime_wanxiang_pro/releases/download/dict-nightly/3-zrm_dicts.zip  || exit 2
-unzip -o "$TMP"/3-zrm_dicts.zip -d "$TMP"                                                || exit 2
-cp  -rvf "$TMP"/zrm_dicts/* "$RIME"/cn_dicts                                             || exit 2
+axel -n 2 -o ${TMP} ${URL}/rime_wanxiang_pro/releases/download/dict-nightly/3-zrm_dicts.zip  || exit 2
+unzip    -qo ${TMP}/3-zrm_dicts.zip -d ${TMP}                                                || exit 2
 
 ## Download octagram
-axel  -o "$TMP" "$URL"/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram         || exit 3
-cp  -rvf "$TMP"/wanxiang-lts-zh-hans.gram "$RIME"                                        || exit 3
+axel -n 2 -o ${TMP} ${URL}/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram         || exit 3
 
-## patch wanxiang.schema.yaml
-sed 's/  __include: 自然码/  __include: 全拼/g' -i "$RIME"/wanxiang.schema.yaml          || exit 4
-sed 's/#      - mohuyin/      - mohuyin/g'      -i "$RIME"/wanxiang.schema.yaml          || exit 4
+## Update
+echo "Delete Old File"
+while IFS='' read -r wanxiang; do
+  rm -rf "$wanxiang"; 
+done < <(/usr/bin/ls "${RIME}" | grep -E -v "(tips.userdb|zc.userdb|zrmuserdict.txt|user.yaml|custom.yaml$)")
 
-## patch wanxiang_en.schema.yaml
-sed 's/  __include: 自然码/  __include: 全拼/g' -i "$RIME"/wanxiang_en.schema.yaml       || exit 6
-
-## patch wanxiang_radical.schema.yaml
-sed 's/  __include: 自然码/  __include: 全拼/g' -i "$RIME"/wanxiang_radical.schema.yaml  || exit 7
+echo "Update Schema"   && cp -rf ${TMP}/wanxiang-zrm-fuzhu/*      "${RIME}"
+echo "Update Dicts"    && cp -rf ${TMP}/zrm_dicts/*               "${RIME}"/cn_dicts
+echo "Update Octagram" && cp -rf ${TMP}/wanxiang-lts-zh-hans.gram "${RIME}"
 
 ## redeploy
 qdbus6 org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://config/addon/rime/deploy" ""

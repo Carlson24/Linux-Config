@@ -47,6 +47,9 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias .....="cd ../../../../"
 
+# Custom Axel
+alias axel="axel -n 2"
+
 # Show Kwin DebugConsole
 alias kwinsdc="qdbus6 org.kde.KWin /KWin org.kde.KWin.showDebugConsole"
 

@@ -1,1 +1,0 @@
-{"profiles":{"00000000000000000000000000":{"ulid":"00000000000000000000000000","name":"Default","description":"Default profile for all web apps","sites":[]}},"sites":{},"arguments":[],"variables":{},"config":{"always_patch":false,"runtime_enable_wayland":true,"runtime_use_xinput2":false,"runtime_use_portals":true,"use_linked_runtime":false}}

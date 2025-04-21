@@ -508,6 +508,7 @@ ufw enable
 
 ## 修复一个 mkinitcpio 的 WARNING
 ## Possibly missing firmware for module
+## WARNING: Possibly missing firmware for module: 'xhci_pci_renesas'
 ## 注意！这只是一个表面修复！
 echo "Device not available" > /usr/lib/firmware/qat_420xx.bin
 echo "Device not available" > /usr/lib/firmware/qat_420xx_mmp.bin
