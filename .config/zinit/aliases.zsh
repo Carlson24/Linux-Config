@@ -5,8 +5,8 @@ if (( $+commands[uu-coreutils] )); then
   declare -a uutils=(/usr/bin/uu-*)
   export deleteuu="/usr/bin/uu-"
   uutils=("${(@)uutils:#$deleteuu\[}")   # "alias [=uu-[" will cause errors, delete it.
-  for command in "${uutils[@]}"; do
-    commanduu=${command#$deleteuu}
+  for _command in "${uutils[@]}"; do
+    commanduu=${_command#$deleteuu}
     alias ${commanduu}="uu-${commanduu}"
   done
 fi
@@ -22,6 +22,12 @@ fi
 # Use curl-rustls to replace curl, because it's safer
 if (( $+commands[curl-rustls] )); then
   alias curl="curl-rustls"
+fi
+
+# Use sudo-rs to replace sudo
+if (( $+commands[sudo-rs] )); then
+  alias su="su-rs"
+  alias sudo="sudo-rs"
 fi
 
 # Custom HIST_STAMPS

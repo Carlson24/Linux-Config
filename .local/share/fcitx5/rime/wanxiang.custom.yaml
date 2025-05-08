@@ -1,19 +1,19 @@
 patch:
   speller/algebra:
     __patch:
-    - wanxiang.schema:/全拼             # 主方案
-    - wanxiang.schema:/fuzhu_zrm
-    - wanxiang.schema:/mohuyin
-  menu/page_size: 8                     # 候选项 8 个
-  switches/@7:
-    name: fuzhu_switch
-    states: [ 助, 辅 ]
-    reset: 1                            # 默认启用辅助
-  translator/user_dict: wanxiangzrm     # 用户词典的文件名称
-  translator/enable_user_dict: true     # 开启自动调频
+      - wanxiang.schema:/全拼             # 主方案
+      - wanxiang.schema:/fuzhu_zrm        # 辅助码
+      - ice.schema:/icemohuyin            # 雾凇模糊音
+      # - ice.schema:/icesuperjp          # 雾凇超级简拼，会带来严重卡顿
+      - ice.schema:/iceuvcover            # 雾凇 uv(ü) 转换
+      - ice.schema:/iceautocorrection     # 雾凇自动纠错
+  cn_en/user_dict: "en_dicts/pinyin"
+  menu/page_size: 6                       # 候选项 6 个
+  custom_phrase/user_dict: usercd         # 自定义词典
+  translator/user_dict: userzc            # 用户词典的文件名称
+  translator/enable_user_dict: true       # 开启自动调频
   translator/disable_user_dict_for_patterns: "^[a-z]{1,6}"  # 基本的6码3字不调频
-  translator/enable_correction: true    # 开启自动纠错
-  custom_phrase/user_dict: zrmuserdict  # 自定义词典
+  # translator/enable_correction: true    # 开启自动纠错
   recognizer/patterns/quick_symbol: "^'.*$"
   recognizer/patterns/quick_text: "^;.*$"
   quick_symbol_text:

@@ -69,7 +69,7 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/npm/npmrc"
 ### Nuget
 export NUGET_PACKAGES="${XDG_CACHE_HOME:-${HOME}/.cache}/NuGetPackages"
 
-# PostgreSQL
+### PostgreSQL
 export PSQLRC="${XDG_CONFIG_HOME:-${HOME}/.config}/pg/psqlrc"
 export PSQL_HISTORY="${XDG_STATE_HOME:-${HOME}/.local/state}/psql_history"
 export PGPASSFILE="${XDG_CONFIG_HOME:-${HOME}/.config}/pg/pgpass"

@@ -28,9 +28,9 @@ declare -a omzp=(
   safe-paste
   command-not-found
 )
-for omzp in ${omzp[@]}; do
+for _omzp in ${omzp[@]}; do
   zinit ice wait lucid
-  zinit snippet OMZP::"${omzp}"
+  zinit snippet OMZP::"${_omzp}"
 done
 
 # Auto Notify styling
