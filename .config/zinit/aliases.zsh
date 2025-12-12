@@ -1,17 +1,6 @@
-# Use uutils coreutils
-# uutils coreutils is a cross-platform reimplementation of the GNU coreutils in Rust.
-# While all programs have been implemented, some options might be missing or different behavior might be experienced.
-if (( $+commands[uu-coreutils] )); then
-  declare -a uutils=(/usr/bin/uu-*)
-  export deleteuu="/usr/bin/uu-"
-  uutils=("${(@)uutils:#$deleteuu\[}")   # "alias [=uu-[" will cause errors, delete it.
-  for _command in "${uutils[@]}"; do
-    commanduu=${_command#$deleteuu}
-    alias ${commanduu}="uu-${commanduu}"
-  done
-fi
+#!/usr/bin/zsh
 
-# Use bat and bat-extra to replace bat, cat, man, rg
+# 更美观的 bat
 if (( $+commands[prettybat] )); then
   alias bat="prettybat"
   alias cat="prettybat"
@@ -19,57 +8,54 @@ if (( $+commands[prettybat] )); then
   alias rg="batgrep"
 fi
 
-# Use curl-rustls to replace curl, because it's safer
-if (( $+commands[curl-rustls] )); then
-  alias curl="curl-rustls"
-fi
-
-# Use sudo-rs to replace sudo
-if (( $+commands[sudo-rs] )); then
-  alias su="su-rs"
-  alias sudo="sudo-rs"
-fi
-
-# Custom HIST_STAMPS
+# 详细的历史命令
 alias history="history -i"
 
-# Use lsd to replace ls
-if (( $+commands[lsd] )); then
-  alias ls="lsd -a --long --group-directories-first --color=always --icon=always"
-  alias la="lsd -a        --group-directories-first --color=always --icon=always"
-  alias ll="lsd -l        --group-directories-first --color=always --icon=always"
-  alias lt="lsd -a --tree --group-directories-first --color=always --icon=always"
-fi
-
-# Always show details for these commands
-alias cp="cp -v"
-alias mv="mv -v"
-alias rm="rm -v"
+# 这些命令始终显示详细信息
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
 alias mkdir="mkdir -v"
 
-# Fast return to directory
+# 快速返回
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 alias .....="cd ../../../../"
 
-# Custom Axel
-alias axel="axel -n 2"
+# fd 找到一个目录，ff 找到一个文件
+(( $+commands[fd] )) || alias fd="find . -type d -name"
+(( $+commands[ff] )) || alias ff="find . -type f -name"
 
-# Show Kwin DebugConsole
+# 使用 eza 代替 ls
+alias ls="eza -hla --icons=always --group-directories-first"
+
+# 快速重启 dae
+alias redae="sudo systemctl restart dae.service"
+
+# 简化 ping 命令
+alias ping="ping -c 5"
+alias ping6="ping6 -c 5"
+
+# 自动临时目录
+if [[ -d "/tmp/carlson" ]]; then
+  function tmpdir() {
+    TEMPWORKDIR=$(mktemp -d "/tmp/carlson/TMP-XXXXXX")
+    cd "$TEMPWORKDIR"
+  }
+fi
+
+# clear 命令提示
+alias clr="clear; echo 当前作为用户 $USERNAME 登录于 $TTY ，位于目录 $PWD 。"
+
+# 显示 KWin 调试窗口
 alias kwinsdc="qdbus6 org.kde.KWin /KWin org.kde.KWin.showDebugConsole"
 
-# Start kate always silent
-alias kate="kate > /dev/null 2>&1"
-
-# Update zinit completions
+# 更新 zinit completions
 alias zinit-updatecompletions="zinit cclear -q && zinit creinstall -q /usr/share/zsh/site-functions"
 
-# Make subversion comply with XDG Base Directory Specification
-alias svn="svn --config-dir ${XDG_CONFIG_HOME:-$HOME/.config}/subversion"
-
-# Make wget comply with XDG Base Directory Specification
+# 移走 wget 日志文件
 alias wget="wget --hsts-file=${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"
 
-# Make yarn comply with XDG Base Directory Specification
+# 移走 yarn 配置
 alias yarn="yarn --use-yarnrc ${XDG_CONFIG_HOME:-$HOME/.config}/yarn/config"

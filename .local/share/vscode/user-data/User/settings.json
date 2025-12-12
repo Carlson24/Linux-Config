@@ -1,8 +1,8 @@
 {
-  "chat.commandCenter.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "'Maple Mono Normal NF CN',  'Cascadia Code NF',  'Twemoji Mozilla', 'Cascadia Code NF', 'monospace'",
+  "editor.defaultFormatter": "prettier.prettier-vscode",
+  "editor.fontFamily": "'Maple Mono NFMono CN', 'Twemoji Mozilla', '思源黑体', '遍黑体P1', '遍黑体P2'",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.formatOnPaste": true,
@@ -10,12 +10,16 @@
   "editor.formatOnType": true,
   "editor.renderWhitespace": "all",
   "editor.semanticHighlighting.enabled": true,
+  "editor.stickyTabStops": true,
   "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "extensions.ignoreRecommendations": true,
   "files.autoGuessEncoding": true,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 5000,
   "files.trimFinalNewlines": true,
-  "makefile.configureOnOpen": true,
+  "git.autofetch": true,
+  "go.toolsManagement.autoUpdate": true,
   "redhat.telemetry.enabled": false,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.enableVisualBell": true,
@@ -28,30 +32,29 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.layoutControl.enabled": false,
-  "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
   "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
+  "gopls": {
+    "ui.semanticTokens": true
   },
-  "go.toolsManagement.autoUpdate": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "extensions.ignoreRecommendations": true,
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
-  "editor.tabSize": 2,
-  "editor.stickyTabStops": true,
-  "cSpell.userWords": [
-    "archlinux",
-    "Cachy",
-    "cachyos",
-    "keyserver",
-    "typora",
-    "wanxiang"
-  ],
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
   "[properties]": {
-    
-  }
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "Lingma.DisplayLanguage": "简体中文",
+  "Lingma.PreferredLanguage for AI Chat": "简体中文",
+  "Lingma.PreferredLanguage forCommitMessage": "简体中文",
+  "shellformat.path": "/usr/bin/shfmt",
+  "git.defaultBranchName": "master",
+  "git.enableCommitSigning": true
 }

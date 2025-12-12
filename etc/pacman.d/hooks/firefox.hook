@@ -2,11 +2,11 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = firefox
+Target = firefox-developer-edition
 
 [Action]
 Description = Making Firefox Emoji Available to Fontconfig
 Depends = coreutils
 When = PostTransaction
 NeedsTargets
-Exec = /usr/bin/ln -sf /usr/lib/firefox/fonts/TwemojiMozilla.ttf /usr/share/fonts/TTF/TwemojiMozilla.ttf
+Exec = /usr/bin/ln -sf /usr/lib/firefox-developer-edition/fonts/TwemojiMozilla.ttf /usr/share/fonts/TTF/TwemojiMozilla.ttf

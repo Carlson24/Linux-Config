@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+
+DEPLOY_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/fcitx5/rime"
+DICTFILE="$DEPLOY_DIR/wanxiang_pro.dict.yaml"
+MOEGIRL='  - dicts/moegirl.pro       #萌娘百科'
+# 处理词典
+TMPFILE=$(mktemp dict-XXXXXX)
+sed -i 's/#[[:space:]]*- /  - /' "$DICTFILE"
+awk -v key="物种多样性" -v insert="$MOEGIRL" \
+    'index($0,key)>0{print $0; print insert;next}1' \
+    "$DICTFILE" >"$TMPFILE"
+mv "$TMPFILE" "$DICTFILE"
+chmod 644 "$DICTFILE"
+
+# 处理lua
+pushd "$DEPLOY_DIR/lua"
+patch -p1 <"$DEPLOY_DIR/custom/customlua.patch"
+popd

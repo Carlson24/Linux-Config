@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 mime=$(file -Lbs --mime-type "$1")
 category=${mime%%/*}
+kind=${mime##*/}
 
-if [ -d "$1" ]; then
-    lsd -al --config-file="${XDG_CONFIG_HOME:-${HOME}/.config}/zinit/lsd-fzf.yaml" "$1"
-elif [ "$category" = image ]; then
-    chafa -f symbols "$1"
-elif [ "$category" = text ]; then
-    prettybat --color=always "$1"
+if [[ -d "$1" ]]; then
+  eza -hl --git --color=always --icons --group-directories-first "$1"
+elif [[ "$category" = text ]]; then
+  prettybat "$1"
+elif [[ "$category" = image ]]; then
+  chafa -f symbols "$1"
+  exiftool "$1"
 else
-    exit 1
+  lesspipe.sh "$1" | prettybat
 fi

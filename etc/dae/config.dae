@@ -1,0 +1,4 @@
+# load all dae files placed in ./config.d/
+include {
+    config.d/*.dae
+}

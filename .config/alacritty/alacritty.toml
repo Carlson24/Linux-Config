@@ -10,8 +10,8 @@ opacity = 0.8
 decorations_theme_variant = "Dark"
 
 [window.dimensions]
-columns = 115
-lines = 35
+columns = 100
+lines = 30
 
 [window.class]
 instance = "Alacritty"
@@ -52,19 +52,19 @@ white = "0xECEFF4"
 size = 12
 
 [font.normal]
-family = "Cascadia Code NF"
+family = "Maple Mono NFMono CN"
 style = "Regular"
 
 [font.bold]
-family = "Cascadia Code NF"
+family = "Maple Mono NFMono CN"
 style = "Bold"
 
 [font.italic]
-family = "Cascadia Code NF"
+family = "Maple Mono NFMono CN"
 style = "Italic"
 
 [font.bold_italic]
-family = "Cascadia Code NF"
+family = "Maple Mono NFMono CN"
 style = "Bold Italic"
 
 [selection]
@@ -162,4 +162,4 @@ action = "ResetFontSize"
 [general]
 live_config_reload = true
 working_directory = "None"
-import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]

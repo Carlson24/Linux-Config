@@ -1,0 +1,24 @@
+# 排除文件本身
+custom/user_exclude_file.txt
+# 用户数据库
+lua/sequence.userdb
+lua/sequence.txt
+lua/input_stats.lua
+# 同步
+installation.yaml
+user.yaml
+# custom 文件
+default.custom.yaml
+wanxiang_pro.custom.yaml
+wanxiang_reverse.custom.yaml
+wanxiang_mixedcode.custom.yaml
+# 自定义文件
+custom/aux_flypy.txt
+custom/official_flypy.txt
+custom/user_flypy_dicts.txt
+custom/customlua.patch
+dicts/moegirl.pro.dict.yaml
+lua/tips/tips_user.txt
+lua/aux_code.lua
+zc_cn.userdb
+zc_en.userdb

@@ -1,0 +1,30 @@
+# See https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/routing.md for full examples.
+routing {
+    ### Preset rules.
+
+    # Network managers in localhost should be direct to avoid false negative network connectivity check when binding to
+    # WAN.
+    pname(NetworkManager) -> direct
+
+    # Put it in the front to prevent broadcast, multicast and other packets that should be sent to the LAN from being
+    # forwarded by the proxy.
+    # "dip" means destination IP.
+    dip(224.0.0.0/3, 'ff00::/8') -> direct
+
+    # This line allows you to access private addresses directly instead of via your proxy. If you really want to access
+    # private addresses in your proxy host network, modify the below line.
+    dip(geoip:private) -> direct
+
+    ### Write your rules below.
+
+    # Disable h3 because it usually consumes too much cpu/mem resources.
+    l4proto(udp) && dport(443) -> block
+    dip(geoip:cn) -> direct
+    domain(geosite:cn) -> direct
+    domain(suffix: nju.edu.cn) -> direct
+    domain(suffix: ustc.edu.cn) -> direct
+    domain(suffix: tuna.tsinghua.edu.cn) -> direct
+    domain(suffix: phxv.top) -> direct
+    
+    fallback: ikuuu_group
+}

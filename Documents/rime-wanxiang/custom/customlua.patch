@@ -1,0 +1,58 @@
+diff -Naur lua/super_comment_preedit.lua lua.new/super_comment_preedit.lua
+--- lua/super_comment_preedit.lua	2025-12-06 13:18:36.000000000 +0800
++++ lua.new/super_comment_preedit.lua	2025-12-05 15:30:30.386498870 +0800
+@@ -523,6 +523,31 @@
+             end
+         end
+ 
++        -- ⑤ 处理用户标记（※ ∞ ⚡️ ⇥）
++        if env.is_pinyin_enabled or env.is_fuzhu_enabled then
++            -- 当拼音或辅助码开启时，在标记前添加空格
++            if cand.type == "user_phrase" then  -- 用户字典
++                final_comment = final_comment .. " ※"
++            elseif cand.type == "sentence" then  -- 造句
++                final_comment = final_comment .. " ∞"
++            elseif cand.type == "user_table" then  -- 用户表
++                final_comment = final_comment .. " ⚡️"
++            elseif cand.type == "completion" then  -- 补全
++                final_comment = final_comment .. " ⇥"
++            end
++        else
++            -- 当拼音和辅助码都关闭时，不加空格
++            if cand.type == "user_phrase" then  -- 用户字典
++                final_comment = final_comment .. "※"
++            elseif cand.type == "sentence" then  -- 造句
++                final_comment = final_comment .. "∞"
++            elseif cand.type == "user_table" then  -- 用户表
++                final_comment = final_comment .. "⚡️"
++            elseif cand.type == "completion" then  -- 补全
++                final_comment = final_comment .. "⇥"
++            end
++        end
++
+         -- 应用注释
+         if final_comment ~= initial_comment then
+             genuine_cand.comment = final_comment
+diff -Naur lua/super_tips.lua lua.new/super_tips.lua
+--- lua/super_tips.lua	2025-12-06 13:18:36.000000000 +0800
++++ lua.new/super_tips.lua	2025-12-07 13:56:26.534783279 +0800
+@@ -205,6 +205,19 @@
+         env.current_tip = tips.get_tip(cand.text)
+     end
+ 
++    -- 检查是否是简码类型，且用户输入与编码相同
++    if env.current_tip ~= nil and env.current_tip ~= "" then
++        -- 判断是否为简码类型（支持全角和半角冒号）
++        local tip_type = env.current_tip:match("^(..-)[:：]")
++        local commit_txt = env.current_tip:match("：%s*(.*)%s*") -- 全角冒号
++            or env.current_tip:match(":%s*(.*)%s*") -- 半角冒号
++        
++        -- 如果是简码类型且用户输入与上屏文本相同，则不显示tips
++        if tip_type == "简码" and commit_txt and commit_txt == context.input then
++            env.current_tip = nil
++        end
++    end
++
+     if env.current_tip ~= nil and env.current_tip ~= "" then
+         -- 有 tips 则直接设置 prompt
+         segment.prompt = "〔" .. env.current_tip .. "〕"

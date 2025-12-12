@@ -1,0 +1,125 @@
+字体组合:
+  &字体组合 [
+    ChillRoundM.ttf,
+    SourceHanSansSC-Regular.otf,
+    PlangothicP1-Regular.otf,
+    PlangothicP2-Regular.otf,
+    iconfont.ttf,
+    TwemojiMozilla.ttf,
+  ]
+符号组合: &符号组合 [ChillRoundM.ttf, iconfont.ttf, TwemojiMozilla.ttf]
+patch:
+  style/keyboard_height: 330
+  style/keyboard_padding: 4
+  style/latin_font: ChillRoundM.ttf
+  style/text_font: ChillRoundM.ttf
+  style/comment_font: *字体组合
+  style/candidate_font: *字体组合
+  style/key_font: *符号组合
+  style/preview_font: *符号组合
+  style/label_font: ChillRoundM.ttf
+  style/symbol_font: *符号组合
+  style/hanb_font: *字体组合
+  style/long_text_font: *字体组合
+  preset_keys/+:
+    fancha: { label: "反查", send: "`" }
+    zaoci: { label: "造词", text: "{`}{`}" }
+    candtop: { label: "置顶", send: Control+p }
+    candleft: { label: "左移", send: Control+j }
+    candright: { label: "右移", send: Control+k }
+    candreset: { label: "重置", send: Control+l }
+    select_all2: { label: "\uE1BF", send: Control+a }
+    copy2: { label: "\uE093", send: Control+c }
+    cut2: { label: "\uE08B", send: Control+x }
+    paste2: { label: "\uE11D", send: Control+v }
+    undo2: { label: "\uE194", send: Control+z }
+    redo2: { label: "\uE193", send: Control+y }
+    liquid_keyboard_clipboard2:
+      {
+        label: "\uE091",
+        send: function,
+        command: liquid_keyboard,
+        option: 剪贴,
+      }
+    ndate: { label: "\uE197", send: N }
+    num71: { label: "¹", send: 7 }
+    num82: { label: "²", send: 8 }
+    num93: { label: "³", send: 9 }
+    num04: { label: "⁴", send: 0 }
+    left2: { label: "\uE0A4", repeatable: true, send: Left }
+    right2: { label: "\uE0B4", repeatable: true, send: Right }
+    translate2: { label: "\uE62F", send: Control+e }
+    wxcalc: { label: "\uE138", text: "{Keyboard_jisuanqi}{V}" }
+    wxcalc1: { label: =, text: "{Keyboard_jisuanqi}{V}" }
+    voice2: { label: "\uE180", send: VOICE_ASSIST }
+    mode_switch2:
+      { toggle: ascii_mode, send: Mode_switch, states: ["\uE061", "\uE071"] }
+  preset_keyboards/default/key_symbol_offset_y: 0.5
+  # 数字按键高度
+  preset_keyboards/default/keys/@0/height: 17
+  preset_keyboards/default/keys/@1/height: 17
+  preset_keyboards/default/keys/@2/height: 17
+  preset_keyboards/default/keys/@3/height: 17
+  preset_keyboards/default/keys/@4/height: 17
+  preset_keyboards/default/keys/@5/height: 17
+  preset_keyboards/default/keys/@6/height: 17
+  preset_keyboards/default/keys/@7/height: 17
+  preset_keyboards/default/keys/@8/height: 17
+  preset_keyboards/default/keys/@9/height: 17
+  # 声调筛选
+  preset_keyboards/default/keys/@6/composing: num71
+  preset_keyboards/default/keys/@7/composing: num82
+  preset_keyboards/default/keys/@8/composing: num93
+  preset_keyboards/default/keys/@9/composing: num04
+  # 符号调整
+  preset_keyboards/default/keys/@18/long_click: "……"
+  preset_keyboards/default/keys/@25/long_click: "<"
+  preset_keyboards/default/keys/@26/long_click: ">"
+  preset_keyboards/default/keys/@37/long_click: '\'
+  preset_keyboards/default/keys/@39/long_click: "——"
+  preset_keyboards/default/keys/@30/label: ";"
+  preset_keyboards/default/keys/@43/label: ","
+  preset_keyboards/default/keys/@45/label: "."
+  # 以词定字
+  preset_keyboards/default/keys/@43/long_click: "["
+  preset_keyboards/default/keys/@45/long_click: "]"
+  # 词频调整
+  preset_keyboards/default/keys/@19/long_click: "candtop"
+  preset_keyboards/default/keys/@19/label_symbol: "\uE0C9"
+  preset_keyboards/default/keys/@27/long_click: "candleft"
+  preset_keyboards/default/keys/@27/label_symbol: "\uE0A9"
+  preset_keyboards/default/keys/@28/long_click: "candright"
+  preset_keyboards/default/keys/@28/label_symbol: "\uE0B9"
+  preset_keyboards/default/keys/@29/long_click: "candreset"
+  preset_keyboards/default/keys/@29/label_symbol: "\uE18A"
+  # 剪切板
+  preset_keyboards/default/keys/@33/long_click: "undo2"
+  preset_keyboards/default/keys/@15/long_click: "redo2"
+  preset_keyboards/default/keys/@21/long_click: "select_all2"
+  preset_keyboards/default/keys/@34/long_click: "cut2"
+  preset_keyboards/default/keys/@35/long_click: "copy2"
+  preset_keyboards/default/keys/@36/long_click: "paste2"
+  # 日期
+  preset_keyboards/default/keys/@38/long_click: "ndate"
+  # 计算器
+  preset_keyboards/default/keys/@41/long_click: "wxcalc"
+  preset_keyboards/default/keys/@41/popup: ["wxcalc1", "刷新1"]
+  # 附加功能
+  preset_keyboards/default/keys/+:
+    - {
+        click: liquid_keyboard_clipboard2,
+        width: 14,
+        height: 12,
+        __include: 思无邪46键.trime:/a-z,
+      }
+    - { click: left2, width: 14, height: 12, __include: 思无邪46键.trime:/a-z }
+    - { click: fancha, width: 14, height: 12, __include: 思无邪46键.trime:/a-z }
+    - { click: voice2, width: 16, height: 12, __include: 思无邪46键.trime:/a-z }
+    - { click: zaoci, width: 14, height: 12, __include: 思无邪46键.trime:/a-z }
+    - { click: right2, width: 14, height: 12, __include: 思无邪46键.trime:/a-z }
+    - {
+        click: mode_switch2,
+        width: 14,
+        height: 12,
+        __include: 思无邪46键.trime:/a-z,
+      }

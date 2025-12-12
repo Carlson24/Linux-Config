@@ -1,0 +1,28 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system>                             <dir>             <type>  <options>                                                                   <dump>  <pass>
+# /dev/mapper/cachyos LABEL=cachyos
+UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /                 btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@          0       0
+UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /home             btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@home      0       0
+UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /srv              btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@srv       0       0
+UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /var/cache        btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@var_cache 0       0
+UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /var/log          btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@var_log   0       0
+UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /.snapshots       btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@snapshots 0       0
+
+# /dev/mapper/gentoo  LABEL=gentoo
+UUID=b3d2c9cc-d836-4423-acd7-fd06d8ddb0ad   /mnt/gentoo       btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@          0       0
+UUID=b3d2c9cc-d836-4423-acd7-fd06d8ddb0ad   /mnt/gentoo/home  btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@home      0       0
+
+# /dev/mapper/data    LABEL=data
+UUID=12c15a12-7c21-4089-8349-0ce7ebfa403f   /mnt/data         btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@data      0       0
+
+# /dev/mapper/swap    LABEL=swap
+UUID=3ed81eb0-bc43-4dc6-bd7a-60de959655da   none              swap    defaults,noatime,pri=200                    0   0
+
+# /dev/nvme0n1p1      LABEL=BOOT
+UUID=3468-C8CB                              /boot             vfat    defaults,noatime,umask=0027                 0   2
+
+# tmpfs
+tmpfs                 /tmp                  tmpfs             rw,nodev,nosuid,size=80%                            0   0
+tmpfs                 /var/cache/mysqltmp   tmpfs             rw,noatime,gid=mysql,uid=mysql,size=128M,mode=0750  0   0

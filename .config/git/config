@@ -1,7 +1,7 @@
 [user]
 	email = aubreycarlson24@outlook.com
 	name = Carlson24
-	signingKey = 780CA517FFB9CAE96F5C8FA67F40FAF29DF9F3AF
+	signingKey = 7DFCBCB751F66A02D4B392589F1A9846442147BF
 [core]
 	autocrlf = input
 	editor = helix
@@ -15,3 +15,5 @@
 	path = ~/.config/delta/themes/catppuccin.gitconfig
 [delta]
 	features = catppuccin-mocha
+[color]
+	ui = auto

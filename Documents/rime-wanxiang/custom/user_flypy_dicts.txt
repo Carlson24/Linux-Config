@@ -1,0 +1,17 @@
+#给自定义用户词扩展一个换行:\n, 制表符：\t, 回车符：\r, 空格：\s
+ᵃᵘʳ	aur	60
+ᴬᵁᴿ	aur	50
+万象	wx	997
+aubreycarlson24@outlook.com	email	6
+火之晨曦	hvix	60
+张家口	vjk	60
+泠鸢yousa	ly	60
+KP	kp	60
+NPE	npe	60
+SEGFAULT	segfault	60
+SIGSEGV	sigsegv	60
+Kernel Panic	kp	50
+NullPointerException	npe	50
+Segmentation Fault	segfault	50
+Segmentation Fault (core dumped)	segfault	45
+Signal Segmentation Violation	sigsegv	50

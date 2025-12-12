@@ -1,0 +1,4 @@
+patch:
+  speller/algebra:
+    __include: wanxiang_algebra:/mixed/通用派生规则
+    __patch: wanxiang_algebra:/mixed/小鹤双拼

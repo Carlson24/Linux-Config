@@ -1,0 +1,60 @@
+patch:
+  speller/algebra:
+    __patch:
+      - 模糊音
+      - wanxiang_algebra:/pro/小鹤双拼
+      - wanxiang_algebra:/pro/直接辅助
+      - 小鹤双拼提权
+  schema/name: 万象小鹤PRO # 自定义方案名
+  user_dict_set/user_dict: zc_cn # 自定义中文造词词典名
+  add_user_dict/user_dict: zc_cn # 自定义中文造词词典名
+  wanxiang_mixedcode/user_dict: zc_en # 自定义英文造词词典名
+  custom_phrase/user_dict: custom/user_flypy_dicts # 自定义用户词库名称
+  add_user_dict/enable_auto_phrase: true # 自动无词频造词
+  menu/page_size: 5
+  menu/alternative_select_labels: [〡, 〢, 〣, 〤, 〥, 〦, 〧, 〨, 〩]
+  key_binder/tips_key: "period" # 使用句号上屏提示
+  key_binder/bindings/@before 9: { when: has_menu, accept: comma, send: 2 } # 逗号用于次选
+  engine/filters/@before last: lua_filter@*aux_code@aux_flypy # 辅助筛选，分号用于筛选
+  engine/translators/@before 13: table_translator@official_flypy # 小鹤双拼官方
+  official_flypy: # 定义词典
+    dictionary: ""
+    user_dict: custom/official_flypy
+    db_class: stabledb
+    enable_sentence: false
+    enable_completion: false
+    initial_quality: 98
+  speller/auto_select: true # 开启唯一编码自动上屏
+  speller/auto_select_pattern: ^[a-z]+/|^[a-df-zA-DF-Z]\w{3}|^e\w{4} # 自动上屏匹配规则
+  translator/enable_user_dict: false # 关闭自动调频
+  translator/user_dict: user_flypy # 用户词典的文件名称
+  translator/disable_user_dict_for_patterns: ^[a-z]{1,6} # 基本的6码3字不调频
+  switches/@0/reset: 0 # 默认中文状态
+  switches/@1/reset: 0 # 默认中文标点
+  switches/@2/reset: 0 # 默认半角符号
+  switches/@3/reset: 0 # 默认不显示表情候选
+  switches/@4/reset: 0 # 默认关闭翻译
+  switches/@5/reset: 1 # 默认显示拆分
+  switches/@6/reset: 1 # 默认开启大字集
+  switches/@7/reset: 1 # 默认开启超级提示
+  switches/@8/reset: 0 # 默认显示原始编码
+  switches/@9/reset: 1 # 默认显示辅助码
+  switches/@10/reset: 0 # 默认简体模式
+  switches/@11/reset: 0 # 默认词组反查模式
+  switches/@12/reset: 0 # 默认中英混合输入
+
+小鹤双拼提权:
+  __append:
+    - derive/^(.*?)(\d?);(bl|dx|df|eg|fn|kw|ny|tw|vw|yd|rx|fs|ix)$/$1$3/
+    - derive/^(.*?)(\d?);.*?,(bl|dx|df|eg|fn|kw|ny|tw|vw|yd|rx|fs|ix)$/$1$3/
+模糊音: # 只截取了一部分
+  __append:
+    # n - l
+    - derive/^l/n
+    - derive/^n/l
+    # en - eng
+    - derive/([ēéěèe])ng(.*)$/$1n$2
+    - derive/([ēéěèe])n(.*)$/$1ng$2
+    # in - ing
+    - derive/([īíǐìi])ng(.*)$/$1n$2
+    - derive/([īíǐìi])n(.*)$/$1ng$2

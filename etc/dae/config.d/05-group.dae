@@ -1,0 +1,11 @@
+# Node group (outbound).
+group {
+    ikuuu_group {
+
+        filter: name(keyword: 'IEPL') && name(keyword: '香港A03')
+        #filter: name(keyword: '下载专用')
+
+        # Select the node with min moving average of latencies from the group for every connection.
+        policy: min_moving_avg
+    }
+}
