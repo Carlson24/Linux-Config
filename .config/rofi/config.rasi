@@ -1,0 +1,11 @@
+@theme "~/.config/rofi/catppuccin-latte.rasi"
+@import "~/.config/rofi/catppuccin-default.rasi"
+
+configuration {
+  font: "Alibaba PuHuiTi 3.0 17";
+  show-icons: true;
+}
+
+element-text {
+  font: "Alibaba PuHuiTi 3.0 15";
+}

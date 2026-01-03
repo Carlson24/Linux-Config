@@ -26,6 +26,7 @@ declare -a CONFIG_NAME=(
   pluginopt
   fzf-tab-custom
   customopt
+  keybinds
   aliases
   userconfig
 )

@@ -3,20 +3,24 @@
   "display": {
     "separator": " > ",
     "bar": {
-      "charElapsed": "=",
-      "charTotal": "-",
-      "borderLeft": "[",
-      "borderRight": "]",
-      "width": 20
+      "char": {
+        "elapsed": "=",
+        "total": "-"
+      },
+      "border": {
+        "left": "[",
+        "right": "]"
+      },
+      "width": 40
     },
     "color": {
       "separator": "red"
     }
   },
   "logo": {
-    "source": "~/.config/fastfetch/acchan.png",
-    "width": 36,
-    "height": 18,
+    "source": "$HOME/.config/fastfetch/nyarchlogo.png",
+    "width": 48,
+    "height": 20,
     "padding": {
       "top": 6
     }
@@ -96,7 +100,7 @@
     {
       "type": "theme",
       "key": " 󰉼 Global Theme      ",
-      "format": "{theme1} {theme2}",
+      "format": "{theme1}{theme2}",
       "keyColor": "yellow"
     },
     {

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name = Open Kitty Here
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=inode/directory;
+X-KDE-Priority=TopLevel
+Actions=openKittyHere;
+
+[Desktop Action openKittyHere]
+Name=Open Kitty Here
+Name[zh]=在此位置打开 Kitty
+Name[zh_CN]=在此位置打开 Kitty
+Icon=kitty
+Exec=kitty --directory %f

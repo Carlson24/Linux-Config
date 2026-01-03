@@ -4,13 +4,6 @@
 export YSU_HARDCORE=1               # “硬核模式”
 export YSU_MESSAGE_POSITION="after" # 如果找到了别名，则提示
 
-# Pinyin Completion 支持双拼
-declare -A FUZZY=(
-  [zh]=v
-  [ch]=i
-  [sh]=u
-)
-
 # Auto Notify 自定义
 export AUTO_NOTIFY_THRESHOLD=10                                         # 超过 10 秒的命令显示通知
 export AUTO_NOTIFY_EXPIRE_TIME=15000                                    # 通知持续 15 秒

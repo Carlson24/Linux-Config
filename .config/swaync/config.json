@@ -1,0 +1,26 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "center",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "fit-to-screen": false,
+  "widgets": ["dnd", "volume", "title", "notifications"],
+  "widget-config": {
+    "title": {
+      "text": "通知",
+      "clear-all-button": true,
+      "button-text": "清理"
+    },
+    "dnd": {
+      "text": "请勿打扰"
+    },
+    "label": {
+      "max-lines": 1,
+      "text": "通知"
+    },
+    "volume": {
+      "label": "󰕾"
+    }
+  }
+}

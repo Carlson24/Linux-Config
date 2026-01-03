@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# sccache编译器包装器
+
+# 获取原始编译器路径
+ORIG_GCC="/usr/bin/gcc"
+ORIG_GPP="/usr/bin/g++"
+ORIG_CLANG="/usr/bin/clang"
+ORIG_CLANGPP="/usr/bin/clang++"
+
+# 根据调用的名称选择编译器
+case "$(basename "$0")" in
+  gcc)
+    exec sccache "$ORIG_GCC" "$@"
+    ;;
+  g++)
+    exec sccache "$ORIG_GPP" "$@"
+    ;;
+  clang)
+    exec sccache "$ORIG_CLANG" "$@"
+    ;;
+  clang++)
+    exec sccache "$ORIG_CLANGPP" "$@"
+    ;;
+  *)
+    echo "Unknown compiler wrapper" >&2
+    exit 1
+    ;;
+esac

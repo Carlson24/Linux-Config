@@ -3,7 +3,6 @@
 # 加载插件
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" hlissner/zsh-autopair \
-  atinit"zicompinit; zicdreplay" petronny/pinyin-completion \
   atinit"zicompinit; zicdreplay" Aloxaf/fzf-tab \
   atinit"zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
@@ -45,13 +44,7 @@ for _omzc in ${omzc[@]}; do
   zinit snippet OMZP::"${_omzc}/_${_omzc}"
 done
 
-# 自己写的小插件
-export CUSTOM_SNIPPETS="${XDG_CONFIG_HOME:-$HOME/.config}/zinit/snippets"
-if (( $+commands[ip] )); then
-  zinit ice wait lucid
-  zinit snippet "$CUSTOM_SNIPPETS/getip.zsh"
-fi
-
+CUSTOM_SNIPPETS="$XDG_CONFIG_HOME/zinit/snippets"
 # Command not Found
 if (( $+commands[pkgfile] )); then
   if [[ ! -f "$CUSTOM_SNIPPETS/command-not-found.zsh" ]]; then
@@ -66,3 +59,6 @@ if (( $+commands[rbenv] )); then
   zinit ice wait lucid
   zinit snippet "$CUSTOM_SNIPPETS/rbenv.zsh"
 fi
+
+zinit ice wait lucid
+zinit snippet "$CUSTOM_SNIPPETS/function.zsh"

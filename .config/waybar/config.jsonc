@@ -1,0 +1,89 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+// ### DEFAULT Laptop  - Top ### //
+{
+  "include": [
+    "$HOME/.config/waybar/modules.jsonc",
+    "$HOME/.config/waybar/modulescustom.jsonc",
+    "$HOME/.config/waybar/modulesgroup.jsonc"
+  ],
+  "layer": "top",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "top",
+  "spacing": 3,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-top": 3,
+  "margin-left": 8,
+  "margin-right": 8,
+
+  "modules-left": [
+    "custom/separator#blank",
+    "custom/cava_mviz",
+    "custom/separator#blank_2",
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+    "custom/swaync",
+    "custom/separator#dot-line",
+    "hyprland/workspaces#pacman",
+    "clock",
+    "custom/separator#dot-line",
+    "custom/weather",
+    "custom/separator#dot-line",
+    "idle_inhibitor"
+  ],
+
+  "modules-right": [
+    "tray",
+    "network#speed",
+    "custom/separator#dot-line",
+    "group/laptop",
+    "custom/separator#dot-line",
+    "group/mobo_drawer",
+    "custom/separator#line",
+    "group/audio",
+    "custom/separator#dot-line",
+    "group/status"
+  ],
+
+  "hyprland/workspaces#pacman": {
+    "all-outputs": true,
+    "disable-scroll": true,
+    "warp-on-scroll": false,
+    "sort-by-number": true,
+    "show-special": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "format": "{icon} {windows}",
+    "format-icons": {
+      "active": "<span font='12'>󰮯 </span>",
+      "empty": "<span font='12'></span>",
+      "default": "<span font='12'>󰊠 </span>"
+    },
+    "window-rewrite-default": "<span font='12'> </span>",
+    "window-rewrite": {
+      "class<code>": "<span font='12'>󰨞 </span>",
+      "class<firefox>": "<span font='12'>󰈹 </span>",
+      "class<kitty>": "<span font='12'>󰄛 </span>",
+      "class<QQ>": "<span font='12'>󰘅 </span>",
+      "class<Bitwarden>": "<span font='12'>󰟣 </span>",
+      "class<jetbrains-studio>": "<span font='12'>󰀴 </span>",
+      "class<Typora>": "<span font='12'>󰍔 </span>",
+      "class<io.missioncenter.MissionCenter>": "<span font='12'>󰌽 </span>",
+      "class<org.jackhuang.hmcl.Launcher|org.prismlauncher.PrismLauncher>": "<span font='12'>󰍳 </span>",
+      "class<org.gnome.seahorse.Application>": "<span font='12'>󰟣 </span>",
+      "class<org.kde.dolphin|xdg-desktop-portal-gtk>": "<span font='12'> </span>",
+      "class<org.kde.kate>": "<span font='12'> </span>",
+      "class<org.kde.gwenview>": "<span font='12'> </span>",
+      "class<virt-manager>": "<span font='12'>󰜪 </span>",
+      "title<.*Minecraft.*>": "<span font='12'>󰍳 </span>"
+    }
+  }
+}

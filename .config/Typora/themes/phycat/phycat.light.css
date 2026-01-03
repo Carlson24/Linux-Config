@@ -34,8 +34,17 @@
 }
 
 @font-face {
-  font-family: "CascadiaCodeNF";
-  src: url("CascadiaCodeNF.ttf");
+  font-family: "MapleMono";
+  font-weight: normal;
+  font-style: normal;
+  src: url("MapleMonoNR-CN-Regular.ttf");
+}
+
+@font-face {
+  font-family: "MapleMono";
+  font-weight: bold;
+  font-style: normal;
+  src: url("MapleMonoNR-CN-Bold.ttf");
 }
 
 html {
@@ -87,7 +96,8 @@ html {
   word-break: break-word;
   word-wrap: break-word;
   text-align: left;
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       90deg,
       rgba(50, 0, 0, 0.05) calc(3% * var(--bg-grid)),
       rgba(0, 0, 0, 0) calc(3% * var(--bg-grid))
@@ -710,7 +720,7 @@ pre.md-meta-block {
   color: var(--element-color-linecode);
   background: var(--element-color-linecode-background);
   border-radius: 3px;
-  font-family: CascadiaCodeNF, WenYuanSans, monospace;
+  font-family: MapleMono, WenYuanSans, monospace;
   letter-spacing: 0.5px;
 }
 
@@ -722,7 +732,7 @@ pre.md-meta-block {
 
 .md-fences:not([lang="mermaid"])::before {
   content: attr(lang);
-  font-family: CascadiaCodeNF, WenYuanSans, monospace;
+  font-family: MapleMono, WenYuanSans, monospace;
   text-align: right;
   padding-right: 15px;
   color: #7e7e7e;
@@ -748,7 +758,7 @@ pre.md-meta-block {
 .cm-s-inner.CodeMirror {
   padding: 1.2rem 0.8rem;
   color: #4f5467;
-  font-family: CascadiaCodeNF, WenYuanSans, monospace;
+  font-family: MapleMono, WenYuanSans, monospace;
   border-radius: 10px;
   background-color: #fa0303;
   /* border: 1px solid #eef2f5;*/

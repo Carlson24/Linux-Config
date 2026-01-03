@@ -1,8 +1,0 @@
-# KEYBOARD CONFIGURATION FILE
-
-# Consult the keyboard(5) manual page.
-
-XKBMODEL="pc104"
-XKBLAYOUT="us"
-XKBOPTIONS="terminate:ctrl_alt_bksp"
-BACKSPACE="guess"

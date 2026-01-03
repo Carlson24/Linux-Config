@@ -5,6 +5,7 @@ routing {
     # Network managers in localhost should be direct to avoid false negative network connectivity check when binding to
     # WAN.
     pname(NetworkManager) -> direct
+    pname(dnsmasq) -> direct
 
     # Put it in the front to prevent broadcast, multicast and other packets that should be sent to the LAN from being
     # forwarded by the proxy.
@@ -25,6 +26,7 @@ routing {
     domain(suffix: ustc.edu.cn) -> direct
     domain(suffix: tuna.tsinghua.edu.cn) -> direct
     domain(suffix: phxv.top) -> direct
+    # domain(suffix: archlinux.org) -> direct
     
     fallback: ikuuu_group
 }

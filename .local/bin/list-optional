@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+TMPOPTFILE=$(mktemp /tmp/opt-XXXXXX.txt)
+
+LC_ALL=C.UTF-8 pacman -Qi | sed '/^[^NO ]/d;/None$/d' |
+  awk 'BEGIN{RS=ORS="\n\n";FS=OFS="\n\\S"} /Optional Deps/ {print $1"\nO"$2}' |
+  sed 's/^Optional Deps   ://;/\[installed\]$/d;s/\s\+/ /' >"$TMPOPTFILE"
+
+kate "$TMPOPTFILE"

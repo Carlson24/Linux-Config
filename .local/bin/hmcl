@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+
+JAVA_HOME="/usr/lib/jvm/openjdk-liberica-full-bin"
+
+HMCL_FORCE_GPU=true
+HMCL_HIDPI=1.5
+
+HMCL_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/hmcl"
+
+HMCL_PROGRAMS=$(/usr/bin/ls "${XDG_DATA_HOME:-${HOME}/.local/share}/java/hmcl" | sort -Vr | head -n 1)
+
+[[ -d "$HMCL_CONFIG_DIR" ]] || mkdir "$HMCL_CONFIG_DIR"
+[[ -f "$HMCL_CONFIG_DIR/hmcl.json" ]] || touch "$HMCL_CONFIG_DIR/hmcl.json"
+
+cd "$HMCL_CONFIG_DIR"
+
+exec "$JAVA_HOME/bin/java" -Dglass.gtk.uiScale="$HMCL_HIDPI" -jar "${XDG_DATA_HOME:-${HOME}/.local/share}/java/hmcl/$HMCL_PROGRAMS"

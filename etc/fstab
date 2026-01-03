@@ -1,28 +1,23 @@
 # Static information about the filesystems.
 # See fstab(5) for details.
 
-# <file system>                             <dir>             <type>  <options>                                                                   <dump>  <pass>
-# /dev/mapper/cachyos LABEL=cachyos
-UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /                 btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@          0       0
-UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /home             btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@home      0       0
-UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /srv              btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@srv       0       0
-UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /var/cache        btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@var_cache 0       0
-UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /var/log          btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@var_log   0       0
-UUID=38dc8d04-fc70-4fb9-a536-b180c0ee7490   /.snapshots       btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@snapshots 0       0
+# <file system>                             <dir>               <type>  <options>                                                       <dump>  <pass>
+# /dev/mapper/cachyos   LABEL=cachyos
+UUID=5a7c9ffc-9707-49a3-b383-e2f968d2a915   /                   btrfs   defaults,noatime,compress=zstd,commit=120,subvol=/@             0       0
+UUID=5a7c9ffc-9707-49a3-b383-e2f968d2a915   /home               btrfs   defaults,noatime,compress=zstd,commit=120,subvol=/@home         0       0
+UUID=5a7c9ffc-9707-49a3-b383-e2f968d2a915   /var/cache          btrfs   defaults,noatime,compress=zstd,commit=120,subvol=/@var_cache    0       0
+UUID=5a7c9ffc-9707-49a3-b383-e2f968d2a915   /var/log            btrfs   defaults,noatime,compress=zstd,commit=120,subvol=/@var_log      0       0
+UUID=5a7c9ffc-9707-49a3-b383-e2f968d2a915   /.snapshots         btrfs   defaults,noatime,compress=zstd,commit=120,subvol=/@snapshots    0       0
 
-# /dev/mapper/gentoo  LABEL=gentoo
-UUID=b3d2c9cc-d836-4423-acd7-fd06d8ddb0ad   /mnt/gentoo       btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@          0       0
-UUID=b3d2c9cc-d836-4423-acd7-fd06d8ddb0ad   /mnt/gentoo/home  btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@home      0       0
+# /dev/mapper/data      LABEL=data
+UUID=b6b7e91d-9596-4b8b-b8b9-c6ae992c65ee   /mnt/data           btrfs   defaults,noatime,compress=zstd,commit=120,subvol=/@cachyos_data 0       0
 
-# /dev/mapper/data    LABEL=data
-UUID=12c15a12-7c21-4089-8349-0ce7ebfa403f   /mnt/data         btrfs   defaults,noatime,space_cache=v2,compress=zstd,commit=120,subvol=/@data      0       0
+# /dev/mapper/swap      LABEL=swap
+UUID=2b407c83-dc1e-480e-a69d-2c3aba00dd69   none                swap    defaults,noatime,pri=200                                        0       0
 
-# /dev/mapper/swap    LABEL=swap
-UUID=3ed81eb0-bc43-4dc6-bd7a-60de959655da   none              swap    defaults,noatime,pri=200                    0   0
+# /dev/nvme0n1p1        LABEL=BOOT
+UUID=3D6E-3DDC                              /boot               vfat    defaults,noatime,umask=0027                                     0       2
 
-# /dev/nvme0n1p1      LABEL=BOOT
-UUID=3468-C8CB                              /boot             vfat    defaults,noatime,umask=0027                 0   2
-
-# tmpfs
-tmpfs                 /tmp                  tmpfs             rw,nodev,nosuid,size=80%                            0   0
-tmpfs                 /var/cache/mysqltmp   tmpfs             rw,noatime,gid=mysql,uid=mysql,size=128M,mode=0750  0   0
+# tmpfs                 LABEL=tmpfs
+tmpfs                                       /tmp                tmpfs   defaults,noatime,mode=1777,size=24576M                          0       0
+tmpfs                                       /var/cache/mysqltmp tmpfs   defaults,noatime,mode=0750,size=128M,gid=mysql,uid=mysql        0       0

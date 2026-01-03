@@ -1,5 +1,8 @@
 #!/usr/bin/zsh
 
+# 处理 sudo
+alias sudo="sudo "
+
 # 更美观的 bat
 if (( $+commands[prettybat] )); then
   alias bat="prettybat"
@@ -17,6 +20,9 @@ alias mv="mv -iv"
 alias rm="rm -iv"
 alias mkdir="mkdir -v"
 
+# TeX Live 使用用户模式
+(( ! $+commands[tlmgr] )) || alias tlmgr="tlmgr --usermode"
+
 # 快速返回
 alias ..="cd ../"
 alias ...="cd ../../"
@@ -27,11 +33,16 @@ alias .....="cd ../../../../"
 (( $+commands[fd] )) || alias fd="find . -type d -name"
 (( $+commands[ff] )) || alias ff="find . -type f -name"
 
-# 使用 eza 代替 ls
-alias ls="eza -hla --icons=always --group-directories-first"
+# 使用 eza 代替 ls tree
+if (( $+commands[eza] )); then
+  alias ls="eza"
+  alias la="eza -hla --icons=always --group-directories-first"
+  alias ll="eza -hl --icons=always --group-directories-first"
+  alias tree="eza -hla --tree --icons=always --group-directories-first"
+fi
 
 # 快速重启 dae
-alias redae="sudo systemctl restart dae.service"
+alias redae="systemctl restart dae.service"
 
 # 简化 ping 命令
 alias ping="ping -c 5"
@@ -55,7 +66,7 @@ alias kwinsdc="qdbus6 org.kde.KWin /KWin org.kde.KWin.showDebugConsole"
 alias zinit-updatecompletions="zinit cclear -q && zinit creinstall -q /usr/share/zsh/site-functions"
 
 # 移走 wget 日志文件
-alias wget="wget --hsts-file=${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
 # 移走 yarn 配置
-alias yarn="yarn --use-yarnrc ${XDG_CONFIG_HOME:-$HOME/.config}/yarn/config"
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
